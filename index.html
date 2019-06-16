@@ -12,19 +12,29 @@ This is the input div
 -->
 <div id="input">
 <textarea id="inputtext">
-# Hello Markdown!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit nulla eget faucibus condimentum. Sed quis nibh a ligula viverra vulputate nec sit amet eros. Aliquam laoreet tempor rutrum. Quisque vestibulum libero sit amet dictum varius.
+# Hello MarkdownTab
+
+Markdown is a lightweight markup language with plain text formatting syntax. John Gruber created the Markdown language in 2004 in collaboration with Aaron Swartz on the syntax, with the goal of enabling people "to write using an easy-to-read and easy-to-write plain text format.Its key design goal is readability – that the language be readable as-is, without looking like it has been marked up with tags or formatting instructions, unlike text formatted with a markup language, such as Rich Text Format (RTF) or HTML, which have obvious tags and formatting instructions.
+
+[Source](https://en.wikipedia.org/wiki/Markdown)
 
 - something
+
+![Fight Club](https://media3.giphy.com/media/YPF8N1ARFOE6c/giphy.gif?cid=790b76115d06317530676d326bcae53d&rid=giphy.gif)
+
 </textarea>
-<input type="button" value="Convert" onclick="convert()"/>
+
 </div>
+
 
 <!--
 This is the output div
 -->
 <div id="output">
+<input type="button" id="togglebutton" class="toggletext" value="<" onclick="togglewindow()"/>
+  <div id="markdowntext">
+  </div>
 </div>
 
 

@@ -1,6 +1,5 @@
 
 
-
 html, body{
 padding: 0px;
 margin: 0px;
@@ -8,41 +7,94 @@ height: 100%;
 }
 
 body{
-  font-family: serif, georgia;
+  font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
+  font-size: 14px;
+  line-height: 2;
+}
+
+a{
+  color: #90b876;
+  text-decoration: none;
   font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted;
 }
-
 h1{
-
+  color: #5187b3;
 }
+
 
 div{
   width: 50%;
   height: 100%;
+  margin: 0px;
 }
 
 #input{
-  background: rgb(158, 208, 153);
   float: left;
 }
+
 #output{
-  padding: 30px;
-  background: rgb(182, 182, 182);
+  color: #a0a7b3;
+  background: #292d34;
   float: right;
 
+}
+
+
+
+#markdowntext {
+  padding: 50px;
+  width: 100%;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+#markdowntext img{
+  max-width:100%;
+}
 textarea {
     width: 100%;
-    height: 90%;
+    height: 100%;
     padding: 50px;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.5;
+    margin-bottom: -9px;
+    resize: none;
+    border: none;
+
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+
+input[type=button]{
+    border: none;
+    cursor: pointer;
+}
+
+.toggletext {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  background: #21252b;
+  color: white;
+  float: left;
+}
+.toggletext:hover{
+  background: #181a1f;
+}
+
+.close{
+  display: none;
+}
+.expand{
+  width: 100%;
+}
+.expandtext{
+  width: 75% !important;
+  margin: 0 auto;
 }
