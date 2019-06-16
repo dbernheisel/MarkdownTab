@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Markdown Tab",
+  "version": "001",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+
+}
