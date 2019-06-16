@@ -1,14 +1,10 @@
 {
   "manifest_version": 2,
   "name": "Markdown Tab",
-  "version": "001",
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["content.js"]
-    }
-  ]
-
+  "description": "A Markdown Page everytime you open a new tab.",
+  "icons": { "208": "icon.png"},
+  "version": "0.1",
+  "chrome_url_overrides" : {
+   "newtab": "index.html"
+  }
 }

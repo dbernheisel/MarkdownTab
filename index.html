@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MarkdownTab</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+<!--
+This is the input div
+-->
+<div id="input">
+<textarea id="inputtext">
+# Hello Markdown!
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit nulla eget faucibus condimentum. Sed quis nibh a ligula viverra vulputate nec sit amet eros. Aliquam laoreet tempor rutrum. Quisque vestibulum libero sit amet dictum varius.
+
+- something
+</textarea>
+<input type="button" value="Convert" onclick="convert()"/>
+</div>
+
+<!--
+This is the output div
+-->
+<div id="output">
+</div>
+
+
+
+
+<script type="text/javascript" src="showdown.js"></script>
+<script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
