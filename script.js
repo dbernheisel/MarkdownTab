@@ -71,3 +71,4 @@ function savetoGoogle() {
 }
 
 togglewindow();
+convert();
