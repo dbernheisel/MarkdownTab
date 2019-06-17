@@ -21,7 +21,7 @@ a{
   padding-bottom: 5px;
   border-bottom: 1px dotted;
 }
-h1{
+h1, h2 {
   color: #5187b3;
   margin: 0px;
   padding: 0px;
@@ -67,7 +67,7 @@ div{
 }
 
 #markdowntext img{
-  width:100%;
+  max-width:100%;
 }
 
 #markdowntext hr {
