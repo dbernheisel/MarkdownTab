@@ -23,6 +23,8 @@ a{
 }
 h1{
   color: #5187b3;
+  margin: 0px;
+  padding: 0px;
 }
 
 ::selection {

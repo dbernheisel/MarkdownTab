@@ -36,9 +36,12 @@ document.getElementById("togglebutton").onclick = function(){
 
 window.addEventListener("load", function(e){
   // GET TEXT FROM GOOGLE SYNC STORAGE
+
   chrome.storage.sync.get(['key'], function(result) {
-    document.getElementById('inputtext').innerHTML = result.key;
-    convert();
+    if(result.key != undefined){
+      document.getElementById('inputtext').innerHTML = result.key;
+      convert();
+    }
   });
 }, false);
 
