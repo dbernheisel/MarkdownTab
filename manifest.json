@@ -4,6 +4,7 @@
   "description": "A Markdown Page everytime you open a new tab.",
   "icons": { "208": "icon.png"},
   "version": "0.1",
+  "permissions": [ "storage" ],
   "chrome_url_overrides" : {
    "newtab": "index.html"
   }

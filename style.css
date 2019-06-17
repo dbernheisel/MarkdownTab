@@ -1,9 +1,12 @@
+/*
+BASE STYLING
+*/
 
 
 html, body{
-padding: 0px;
-margin: 0px;
-height: 100%;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
 }
 
 body{
@@ -15,7 +18,6 @@ body{
 a{
   color: #90b876;
   text-decoration: none;
-  font-size: 20px;
   padding-bottom: 5px;
   border-bottom: 1px dotted;
 }
@@ -23,6 +25,19 @@ h1{
   color: #5187b3;
 }
 
+::selection {
+  color: #a0a7b3;
+  background: #5187b3;
+}
+
+::-moz-selection {
+  color: #a0a7b3;
+  background: #5187b3;
+}
+
+/*
+WINDOWS STYLING
+*/
 
 div{
   width: 50%;
@@ -41,8 +56,6 @@ div{
 
 }
 
-
-
 #markdowntext {
   padding: 50px;
   width: 100%;
@@ -52,28 +65,39 @@ div{
 }
 
 #markdowntext img{
-  max-width:100%;
+  width:100%;
 }
+
+#markdowntext hr {
+  margin: 50px 0px !important;
+  height: 0px;
+  border: 1px solid;
+}
+
 textarea {
-    width: 100%;
-    height: 100%;
-    padding: 50px;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.5;
-    margin-bottom: -9px;
-    resize: none;
-    border: none;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: -9px;
+  resize: none;
+  border: none;
 
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+
+/*
+BUTTON STYLING
+*/
 
 input[type=button]{
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 .toggletext {
@@ -95,6 +119,6 @@ input[type=button]{
   width: 100%;
 }
 .expandtext{
-  width: 75% !important;
+  width: 80% !important;
   margin: 0 auto;
 }
