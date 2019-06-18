@@ -41,7 +41,6 @@ window.addEventListener("load", function(e){
     if(result.key != undefined){
       document.getElementById('inputtext').innerHTML = result.key;
       convert();
-      togglewindow();
     }
     else {
       var text = `
