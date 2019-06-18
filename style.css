@@ -27,6 +27,11 @@ h1, h2 {
   padding: 0px;
 }
 
+h3, h4 {
+  margin-top: 50px;
+  margin-bottom: -10px;
+}
+
 ::selection {
   color: #a0a7b3;
   background: #5187b3;

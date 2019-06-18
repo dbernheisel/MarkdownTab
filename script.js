@@ -41,6 +41,28 @@ window.addEventListener("load", function(e){
     if(result.key != undefined){
       document.getElementById('inputtext').innerHTML = result.key;
       convert();
+      togglewindow();
+    }
+    else {
+      var text = `
+# Hello MarkdownTab
+## This is a subtitle
+
+Markdown is a lightweight markup language with plain text formatting syntax. John Gruber created the Markdown language in 2004 in collaboration with Aaron Swartz on the syntax. Its key design goal is readability – that the language be readable as-is, without looking like it has been marked up with tags or formatting instructions, unlike text formatted with a markup language, such as Rich Text Format (RTF) or HTML, which have obvious tags and formatting instructions. [More Info.](https://en.wikipedia.org/wiki/Markdown)
+
+- something
+- something else
+- something nice
+
+You can learn how to use markdown at [this](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) link.
+
+---
+
+![Fight Club](https://media3.giphy.com/media/YPF8N1ARFOE6c/giphy.gif?cid=790b76115d06317530676d326bcae53d&rid=giphy.gif)
+      `;
+      document.getElementById('inputtext').innerHTML = text;
+      convert();
+      togglewindow();
     }
   });
 }, false);
@@ -69,6 +91,3 @@ function savetoGoogle() {
     convert();
   });
 }
-
-togglewindow();
-convert();
