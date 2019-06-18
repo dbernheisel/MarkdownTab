@@ -41,6 +41,7 @@ window.addEventListener("load", function(e){
     if(result.key != undefined){
       document.getElementById('inputtext').innerHTML = result.key;
       convert();
+      togglewindow();
     }
     else {
       var text = `
@@ -61,7 +62,6 @@ You can learn how to use markdown at [this](https://github.com/adam-p/markdown-h
       `;
       document.getElementById('inputtext').innerHTML = text;
       convert();
-      togglewindow();
     }
   });
 }, false);
