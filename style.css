@@ -2,7 +2,6 @@
 BASE STYLING
 */
 
-
 html, body{
   padding: 0px;
   margin: 0px;
@@ -13,6 +12,8 @@ body{
   font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
   font-size: 14px;
   line-height: 2;
+  color: #a0a7b3;
+  background: #272a30;
 }
 
 a{
@@ -35,8 +36,8 @@ em {
 
 blockquote {
   border-left: 2px solid #a0a7b3;
-  padding: 10px 0px 10px  30px;
-  margin-left: 0px;
+  padding-left:30px;
+  margin: 50px 0px;
   color: #666;
 }
 
@@ -44,19 +45,27 @@ blockquote li{
   list-style-type: none;
   font-size: 20px;
   color: #a0a7b3;
+
+}
+blockquote li, blockquote ul{
+  margin: 0px;
+  padding: 0px;
 }
 
-h1, h2 {
+h1 {
   color: #5187b3;
   margin: 0px;
   padding: 0px;
 }
 
-h3, h4 {
-  margin-top: 50px;
-  margin-bottom: -10px;
+h2, h3, h4, h5 {
+  margin: 0px;
+  padding: 0px;
 }
 
+ul{
+  margin-bottom: 50px;
+}
 ::selection {
   color: #a0a7b3;
   background: #5187b3;
@@ -66,6 +75,7 @@ h3, h4 {
   color: #a0a7b3;
   background: #5187b3;
 }
+
 
 /*
 WINDOWS STYLING
@@ -82,14 +92,13 @@ div{
 }
 
 #output{
-  color: #a0a7b3;
-  background: #292d34;
   float: right;
   overflow: scroll;
+  background: #292d34;
 }
 
 #markdowntext {
-  padding:  100px 0px;
+  padding:  75px 0px;
   margin: auto;
   width: 90%;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -99,6 +108,8 @@ div{
 
 #markdowntext img{
   max-width:100%;
+  display: block;
+  margin: 75px auto;
 }
 
 #markdowntext hr {
@@ -148,10 +159,11 @@ input[type=button]{
 .close{
   display: none;
 }
+
 .expand{
   width: 100%;
 }
+
 .expandtext{
   width: 70% !important;
-  margin: 0 auto;
 }
