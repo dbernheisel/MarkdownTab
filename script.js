@@ -13,7 +13,7 @@ function togglewindow(){
   var elem = document.getElementById("togglebutton");
 
     if (elem.value==="<") {
-      elem.value = ">";
+      elem.value = "Edit";
     }
     else elem.value = "<";
 

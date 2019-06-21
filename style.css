@@ -21,6 +21,31 @@ a{
   padding-bottom: 5px;
   border-bottom: 1px dotted;
 }
+
+b, strong {
+  font-size: 20px;
+  color: #90b876;
+}
+
+em {
+  background: #90b876;
+  color: #292d34;
+  padding: 5px 10px;
+}
+
+blockquote {
+  border-left: 2px solid #a0a7b3;
+  padding: 10px 0px 10px  30px;
+  margin-left: 0px;
+  color: #666;
+}
+
+blockquote li{
+  list-style-type: none;
+  font-size: 20px;
+  color: #a0a7b3;
+}
+
 h1, h2 {
   color: #5187b3;
   margin: 0px;
@@ -60,12 +85,13 @@ div{
   color: #a0a7b3;
   background: #292d34;
   float: right;
-
+  overflow: scroll;
 }
 
 #markdowntext {
-  padding: 50px;
-  width: 100%;
+  padding:  100px 0px;
+  margin: auto;
+  width: 90%;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
@@ -105,14 +131,14 @@ BUTTON STYLING
 input[type=button]{
   border: none;
   cursor: pointer;
+  padding: 10px 20px;
 }
 
 .toggletext {
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  background: #21252b;
-  color: white;
+  font-size: 16px;
+  background: #272a30;
+  color: #a0a7b3;
+
   float: left;
 }
 .toggletext:hover{
@@ -126,6 +152,6 @@ input[type=button]{
   width: 100%;
 }
 .expandtext{
-  width: 80% !important;
+  width: 70% !important;
   margin: 0 auto;
 }
