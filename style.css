@@ -136,7 +136,7 @@ textarea {
 
 #customColor {
   height:15%;
-  padding: 10px 50px;
+  padding: 20px 50px;
 
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -144,17 +144,35 @@ textarea {
 }
 
 #customColor ul{
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
+  width: 90%;
+  display: block;
+  height: 100%;
 }
 
-#customColor ul li{
-  margin-right: 20px;
+#customColor li{
+  margin-right: 10px;
+  padding: 0px 5px;
+  width: 85px;
   cursor: pointer;
   list-style-type: none;
   float: left;
 }
 
+#customColor li:nth-child(1) {
+  font-weight: bold;
+  color: var(--blue);
+}
+
+#customColor li:nth-child(3) {
+  background: var(--green);
+  color: var(--light-bg);
+}
+
+#customColor li:nth-child(4) {
+  color: var(--dark-text);
+}
 
 /*
 BUTTON STYLING
