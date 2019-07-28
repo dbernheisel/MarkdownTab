@@ -1,41 +1,16 @@
 
-// FUNCTIONS THAT MAKE SHIT HAPPEN
-function convert() {
-  var converter = new showdown.Converter(),
-      text      = document.getElementById("inputtext").value,
-      html      = converter.makeHtml(text);
+window.addEventListener("load", getInfo);
+document.getElementById('inputtext').addEventListener('keyup',convert);
+document.getElementById("togglebutton").onclick = ()=>togglewindow();
 
 
-  document.getElementById('markdowntext').innerHTML = html;
-}
-
-function togglewindow(){
-  var elem = document.getElementById("togglebutton");
-
-  if (elem.value==="<") { elem.value = "Edit"; }
-  else elem.value = "<";
-
-  document.getElementById("input").classList.toggle("close");
-  document.getElementById("output").classList.toggle("expand");
-  document.getElementById("markdowntext").classList.toggle("expandtext");
-}
-
-// LISTENERS THAT ARE WAITING FOR SOMETHING TO HAPPEN
-document.getElementById("togglebutton").onclick = function(){
-  togglewindow();
-};
-
-window.addEventListener('keyup',function(e){ convert(); },true);
-
-window.addEventListener("load", function(e){
-  // GET TEXT FROM GOOGLE SYNC STORAGE
-  chrome.storage.sync.get(['key'], function(result) {
-    if(result.key != undefined){
-      document.getElementById('inputtext').innerHTML = result.key;
-      convert();
-    }
-    else {
-      var text = `# Hello Markdown Tab
+function getInfo(){
+  try{
+    chrome.storage.sync.get(['key'], (result) => document.getElementById('inputtext').innerHTML = result.key);
+  }
+  catch{
+    var text = `
+# Hello Markdown Tab
 ### A *Markdown* page that comes up __everytime__ we open a new tab
 
 Useful for taking notes, keeping lists, saving links, or to be reminded of pictures or quotes.
@@ -49,44 +24,69 @@ John Gruber and Aaron Swartz created the Markdown language in 2004. Its key desi
 
 You can learn how to use markdown [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet), and edit this page by clicking "Edit" on the top left.
 
-> Special thanks to Devyn and Estevai for creating [Showdown](https://github.com/showdownjs/showdown) which translates markdown to html using javascript, and to [Mihir](https://github.com/plibither8) for inspiring the project. Colors were grabbed from [Atom](https://atom.io/) code editor.
+> Special thanks to Devyn and Estevai for creating [Showdown](https://github.com/showdownjs/showdown) which translates markdown to html using javascript, and to [Mihir](https://github.com/plibither8) for inspiring the project. Colors were grabbed from [Atom](https://atom.io/).
 - Michael.
 
 ---
 
-![Pokemon](https://media3.giphy.com/media/1342dTzTKIkbC0/giphy.gif?cid=790b76115d0d0a7872327a6e6307d86c&rid=giphy.gif)`;
-      document.getElementById('inputtext').innerHTML = text;
-      convert();
-    }
-  });
-}, false);
+![Pokemon](https://media3.giphy.com/media/1342dTzTKIkbC0/giphy.gif?cid=790b76115d0d0a7872327a6e6307d86c&rid=giphy.gif)
+    `;
+    document.getElementById('inputtext').innerHTML = text;
+  } // catch end
+  convert();
+} // function end
 
+function convert() {
+  let converter = new showdown.Converter(),
+      text      = document.getElementById("inputtext").value,
+      html      = converter.makeHtml(text);
 
-// ---
-// GOOGLE SYNC SAVE
-// ---
+  document.getElementById('markdowntext').innerHTML = html;
+}
 
-// SAVE TEXT ON GOOGLE SYNC STORAGE
-window.addEventListener("unload", function(e){
-  var value = document.getElementById("inputtext").value;
-  chrome.storage.sync.set({key: value});
-}, false);
+function togglewindow(){
+  const elem = document.getElementById("togglebutton");
 
-// THIS FUNCTION SAVES TO GOOGLE EVERY SECOND
-var timer = null;
-window.addEventListener('keyup',function(e){
+  elem.value==="<" ? elem.value = "Edit" : elem.value = "<";
+
+  document.getElementById("input").classList.toggle("close");
+  document.getElementById("output").classList.toggle("expand");
+  document.getElementById("markdowntext").classList.toggle("expandtext");
+}
+
+// COLOR PICKER
+const parentCustom = document.querySelector('#cpbtn'),
+      popupCustom = new Picker({
+          parent: parentCustom,
+          popup: 'top',
+          color: 'violet',
+          alpha: false,
+          editor: false,
+          editorFormat: 'hex',
+          onDone: function(color) {
+            parentCustom.style.color = color.rgbaString;
+          },
+});
+
+// GOOGLE SYNC SAVE : 2 SECOND AFTER FINISHED TYPING
+
+var timer;
+window.addEventListener('keyup',()=>{
   clearTimeout(timer);
   timer = setTimeout(savetoGoogle, 1000)
 });
 
 function savetoGoogle() {
-  console.log("Calling google");
-  // SAVE TEXT ON GOOGLE SYNC STORAGE
+  //console.log("Trying to connect to Google");
   var value = document.getElementById("inputtext").value;
-  chrome.storage.sync.set({key: value});
-  // GET TEXT FROM GOOGLE SYNC STORAGE
-  chrome.storage.sync.get(['key'], function(result) {
-    document.getElementById('inputtext').innerHTML = result.key;
-    convert();
-  });
+  try{
+    chrome.storage.sync.set({key: value});
+    chrome.storage.sync.get(['key'], function(result) {
+      document.getElementById('inputtext').innerHTML = result.key;
+      convert();
+    });
+  }
+  catch {
+    console.log('not able to connect to Google.')
+  }
 }

@@ -7,16 +7,31 @@
 </head>
 <body>
 
-<div id="input" class="close">
+<div id="input" class="close section">
   <textarea id="inputtext">
   </textarea>
+
+  <div id="customColor">
+    <p>
+      Custom Colors:
+    </p>
+    <ul>
+      <li id="cpbtn"> Title </li>
+      <li id=""> Text </li>
+      <li id=""> Highlights </li>
+      <li id=""> Quotes </li>
+
+    </ul>
+  </div>
+
 </div>
 
-<div id="output" class="expand">
+<div id="output" class="expand section">
   <input type="button" id="togglebutton" class="toggletext" value="Edit"/>
   <div id="markdowntext" class="expandtext"></div>
 </div>
 
+<script type="text/javascript" src="node_modules/vanilla-picker/dist/vanilla-picker.min.js"></script>
 <script type="text/javascript" src="showdown.js"></script>
 <script type="text/javascript" src="script.js"></script>
 

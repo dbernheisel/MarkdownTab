@@ -2,6 +2,16 @@
 BASE STYLING
 */
 
+:root {
+  --dark-bg: #1b1d21;
+  --medium-bg: #23262b;
+  --light-bg: #292d34;
+  --dark-text: #555555;
+  --light-text: #a0a7b3;
+  --green: #90b876;
+  --blue:#5187b3;
+}
+
 html, body{
   padding: 0px;
   margin: 0px;
@@ -12,12 +22,12 @@ body{
   font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
   font-size: 14px;
   line-height: 2;
-  color: #a0a7b3;
-  background: #272a30;
+  color: var(--light-text);
+  background: var(--dark-bg);
 }
 
 a{
-  color: #90b876;
+  color: var(--green);
   text-decoration: none;
   padding-bottom: 5px;
   border-bottom: 1px dotted;
@@ -25,35 +35,35 @@ a{
 
 b, strong {
   font-size: 20px;
-  color: #90b876;
+  color: var(--green);
 }
 
 em {
-  background: #90b876;
-  color: #292d34;
+  background: var(--green);
+  color: var(--light-bg);
   padding: 5px 10px;
 }
 
 blockquote {
-  border-left: 2px solid #a0a7b3;
+  border-left: 2px solid var(--light-text);
   padding-left:30px;
   margin: 50px 0px;
-  color: #666;
+  color: var(--dark-text);
 }
 
 blockquote li{
   list-style-type: none;
   font-size: 20px;
-  color: #a0a7b3;
-
+  color: var(--light-text);
 }
+
 blockquote li, blockquote ul{
   margin: 0px;
   padding: 0px;
 }
 
 h1 {
-  color: #5187b3;
+  color: var(--blue);
   margin: 0px;
   padding: 0px;
 }
@@ -66,22 +76,12 @@ h2, h3, h4, h5 {
 ul{
   margin-bottom: 50px;
 }
-::selection {
-  color: #a0a7b3;
-  background: #5187b3;
-}
-
-::-moz-selection {
-  color: #a0a7b3;
-  background: #5187b3;
-}
-
 
 /*
 WINDOWS STYLING
 */
 
-div{
+.section{
   width: 50%;
   height: 100%;
   margin: 0px;
@@ -94,7 +94,7 @@ div{
 #output{
   float: right;
   overflow: scroll;
-  background: #292d34;
+  background: var(--light-bg);
 }
 
 #markdowntext {
@@ -120,7 +120,7 @@ div{
 
 textarea {
   width: 100%;
-  height: 100%;
+  height: 85%;
   padding: 50px;
   font-size: 14px;
   font-weight: normal;
@@ -132,6 +132,27 @@ textarea {
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#customColor {
+  height:15%;
+  padding: 10px 50px;
+
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#customColor ul{
+  margin: 0px;
+  padding: 0px;
+}
+
+#customColor ul li{
+  margin-right: 20px;
+  cursor: pointer;
+  list-style-type: none;
+  float: left;
 }
 
 
@@ -147,21 +168,22 @@ input[type=button]{
 
 .toggletext {
   font-size: 16px;
-  background: #272a30;
-  color: #a0a7b3;
-
+  background: var(--medium-bg);
+  color: var(--light-text);
   float: left;
+  outline: none;
+
 }
 .toggletext:hover{
-  background: #181a1f;
+  background: var(--dark-bg);
 }
 
 .close{
-  display: none;
+  display: none !important;
 }
 
 .expand{
-  width: 100%;
+  width: 100% !important;
 }
 
 .expandtext{
