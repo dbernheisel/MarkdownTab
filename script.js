@@ -165,14 +165,9 @@ window.addEventListener('keyup',()=>{
 });
 
 function savetoGoogle() {
-  //console.log("Trying to connect to Google");
   var value = document.getElementById("inputtext").value;
   try{
     chrome.storage.sync.set({key: value});
-    chrome.storage.sync.get(['key'], function(result) {
-      document.getElementById('inputtext').innerHTML = result.key;
-      convert();
-    });
   }
   catch {
     console.log('not able to connect to Google.')
