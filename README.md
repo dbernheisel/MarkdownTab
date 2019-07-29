@@ -14,7 +14,3 @@ You can learn how to use markdown [here](https://github.com/adam-p/markdown-here
 
 > Special thanks to Devyn and Estevai for creating [Showdown](https://github.com/showdownjs/showdown) which translates markdown to html using javascript, and to [Mihir](https://github.com/plibither8) for inspiring the project.
 - Michael.
-
----
-
-![Pokemon](https://media3.giphy.com/media/1342dTzTKIkbC0/giphy.gif?cid=790b76115d0d0a7872327a6e6307d86c&rid=giphy.gif)
