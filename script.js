@@ -54,18 +54,73 @@ function togglewindow(){
   document.getElementById("markdowntext").classList.toggle("expandtext");
 }
 
-// COLOR PICKER
-const parentCustom = document.querySelector('#cpbtn'),
-      popupCustom = new Picker({
-          parent: parentCustom,
+// COLOR PICKERS
+const titleCustom = document.querySelector('#cTitle');
+      popupTitle = new Picker({
+          parent: titleCustom,
           popup: 'top',
-          color: 'violet',
+          color: '5187b3',
           alpha: false,
           editor: false,
           editorFormat: 'hex',
           onDone: function(color) {
-            parentCustom.style.color = color.rgbaString;
+            titleCustom.style.color = color.rgbaString;
+            document.documentElement.style.setProperty('--blue', color.rgbaString);
           },
+});
+
+const textCustom = document.querySelector('#cText'),
+      popupText = new Picker({
+          parent: textCustom,
+          popup: 'top',
+          color: 'a0a7b3',
+          alpha: false,
+          editor: false,
+          editorFormat: 'hex',
+          onDone: function(color) {
+            textCustom.style.color = color.rgbaString;
+            document.documentElement.style.setProperty('--light-text', color.rgbaString);
+          },
+});
+
+const highCustom = document.querySelector('#cHigh'),
+      popupHigh = new Picker({
+          parent: highCustom,
+          popup: 'top',
+          color: '90b876',
+          alpha: false,
+          editor: false,
+          editorFormat: 'hex',
+          onDone: function(color) {
+            highCustom.style.backgroundColor = color.rgbaString;
+            document.documentElement.style.setProperty('--green', color.rgbaString);
+          },
+});
+
+const quoteCustom = document.querySelector('#cQuote'),
+      popupQuote = new Picker({
+          parent: quoteCustom,
+          popup: 'top',
+          color: '555555',
+          alpha: false,
+          editor: false,
+          editorFormat: 'hex',
+          onDone: function(color) {
+            quoteCustom.style.color = color.rgbaString;
+            document.documentElement.style.setProperty('--dark-text', color.rgbaString);
+          },
+});
+
+const resetCustom = document.querySelector('#cReset');
+resetCustom.addEventListener('click',()=>{
+  titleCustom.style.color = '#5187b3';
+  document.documentElement.style.setProperty('--blue','#5187b3');
+  textCustom.style.color = '#a0a7b3';
+  document.documentElement.style.setProperty('--light-text','#a0a7b3');
+  highCustom.style.backgroundColor = '#90b876';
+  document.documentElement.style.setProperty('--green','#90b876');
+  quoteCustom.style.color = '#555555';
+  document.documentElement.style.setProperty('--dark-text', '#555555');
 });
 
 // GOOGLE SYNC SAVE : 2 SECOND AFTER FINISHED TYPING
