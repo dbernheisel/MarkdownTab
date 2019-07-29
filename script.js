@@ -7,6 +7,14 @@ document.getElementById("togglebutton").onclick = ()=>togglewindow();
 function getInfo(){
   try{
     chrome.storage.sync.get(['key'], (result) => document.getElementById('inputtext').innerHTML = result.key);
+
+    chrome.storage.sync.get(['titleCustom', 'textCustom', 'highCustom', 'quoteCustom'], (result) => {
+      document.documentElement.style.setProperty('--blue', result.titleCustom);
+      document.documentElement.style.setProperty('--light-text', result.textCustom);
+      document.documentElement.style.setProperty('--green', result.highCustom);
+      document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
+    });
+
   }
   catch{
     var text = `
@@ -66,6 +74,10 @@ const titleCustom = document.querySelector('#cTitle');
           onDone: function(color) {
             titleCustom.style.color = color.rgbaString;
             document.documentElement.style.setProperty('--blue', color.rgbaString);
+            try {
+              chrome.storage.sync.set({titleCustom: color.rgbaString});
+            }
+            catch {}
           },
 });
 
@@ -80,6 +92,10 @@ const textCustom = document.querySelector('#cText'),
           onDone: function(color) {
             textCustom.style.color = color.rgbaString;
             document.documentElement.style.setProperty('--light-text', color.rgbaString);
+            try {
+              chrome.storage.sync.set({textCustom: color.rgbaString});
+            }
+            catch {}
           },
 });
 
@@ -94,6 +110,10 @@ const highCustom = document.querySelector('#cHigh'),
           onDone: function(color) {
             highCustom.style.backgroundColor = color.rgbaString;
             document.documentElement.style.setProperty('--green', color.rgbaString);
+            try {
+              chrome.storage.sync.set({highCustom: color.rgbaString});
+            }
+            catch {}
           },
 });
 
@@ -108,6 +128,10 @@ const quoteCustom = document.querySelector('#cQuote'),
           onDone: function(color) {
             quoteCustom.style.color = color.rgbaString;
             document.documentElement.style.setProperty('--dark-text', color.rgbaString);
+            try {
+              chrome.storage.sync.set({quoteCustom: color.rgbaString});
+            }
+            catch {}
           },
 });
 
@@ -121,6 +145,15 @@ resetCustom.addEventListener('click',()=>{
   document.documentElement.style.setProperty('--green','#90b876');
   quoteCustom.style.color = '#555555';
   document.documentElement.style.setProperty('--dark-text', '#555555');
+  try {
+    chrome.storage.sync.set({
+      titleCustom: '#5187b3',
+      textCustom: '#a0a7b3',
+      highCustom: '#90b876',
+      quoteCustom: '#555555'
+    });
+  }
+  catch {}
 });
 
 // GOOGLE SYNC SAVE : 2 SECOND AFTER FINISHED TYPING
