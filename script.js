@@ -8,22 +8,6 @@ function getInfo() {
     if(result.key !== undefined) {
       document.getElementById('inputtext').innerHTML = result.key;
     }
-    if(result.titleCustom !== undefined){
-      document.documentElement.style.setProperty('--blue', result.titleCustom);
-    }
-    if(result.textCustom !== undefined){
-      document.documentElement.style.setProperty('--light-text', result.textCustom);
-    }
-    if(result.highCustom !== undefined){
-      document.documentElement.style.setProperty('--green', result.highCustom);
-    }
-    if(result.quoteCustom !== undefined){
-      document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
-    }
-    if(result.bgCustom !== undefined){
-      document.documentElement.style.setProperty('--light-bg', result.bgCustom);
-    }
-
     else {
       var text = `
 # Hello Markdown Tab
@@ -48,6 +32,21 @@ You can learn how to use markdown [here](https://github.com/adam-p/markdown-here
 ![Pokemon](https://media3.giphy.com/media/1342dTzTKIkbC0/giphy.gif?cid=790b76115d0d0a7872327a6e6307d86c&rid=giphy.gif)
       `;
       document.getElementById('inputtext').innerHTML = text;
+    }
+    if(result.titleCustom !== undefined){
+      document.documentElement.style.setProperty('--blue', result.titleCustom);
+    }
+    if(result.textCustom !== undefined){
+      document.documentElement.style.setProperty('--light-text', result.textCustom);
+    }
+    if(result.highCustom !== undefined){
+      document.documentElement.style.setProperty('--green', result.highCustom);
+    }
+    if(result.quoteCustom !== undefined){
+      document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
+    }
+    if(result.bgCustom !== undefined){
+      document.documentElement.style.setProperty('--light-bg', result.bgCustom);
     }
     convert();
   });
