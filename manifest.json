@@ -3,7 +3,7 @@
   "name": "Markdown Tab",
   "description": "A Markdown page that comes up everytime we open a new tab to take notes, keep lists, save links, be reminded of pictures, or quotes",
   "icons": { "300": "icon.png"},
-  "version": "1.2",
+  "version": "1.2.6",
   "permissions": [ "storage" ],
   "chrome_url_overrides" : {
    "newtab": "index.html"

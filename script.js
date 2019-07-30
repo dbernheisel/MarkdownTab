@@ -4,20 +4,29 @@ document.getElementById('inputtext').addEventListener('keyup',convert);
 document.getElementById("togglebutton").onclick = ()=>togglewindow();
 
 
-function getInfo(){
-  try{
-    chrome.storage.sync.get(['key'], (result) => document.getElementById('inputtext').innerHTML = result.key);
+function getInfo() {
+  chrome.storage.sync.get(['key', 'titleCustom', 'textCustom', 'highCustom', 'quoteCustom', 'bgCustom'], (result) => {
+    if(result.key !== undefined) {
+      document.getElementById('inputtext').innerHTML = result.key;
 
-    chrome.storage.sync.get(['titleCustom', 'textCustom', 'highCustom', 'quoteCustom', 'bgCustom'], (result) => {
-      document.documentElement.style.setProperty('--blue', result.titleCustom);
-      document.documentElement.style.setProperty('--light-text', result.textCustom);
-      document.documentElement.style.setProperty('--green', result.highCustom);
-      document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
-      document.documentElement.style.setProperty('--dark-bg', result.bgCustom);
-    });
-  }
-  catch{
-    var text = `
+      if(result.titleCustom !== undefined){
+        document.documentElement.style.setProperty('--blue', result.titleCustom);
+      }
+      if(result.textCustom !== undefined){
+        document.documentElement.style.setProperty('--light-text', result.textCustom);
+      }
+      if(result.highCustom !== undefined){
+        document.documentElement.style.setProperty('--green', result.highCustom);
+      }
+      if(result.quoteCustom !== undefined){
+        document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
+      }
+      if(result.bgCustom !== undefined){
+        document.documentElement.style.setProperty('--light-bg', result.bgCustom);
+      }
+    }
+    else {
+      var text = `
 # Hello Markdown Tab
 ### A *Markdown* page that comes up __everytime__ we open a new tab
 
@@ -38,11 +47,12 @@ You can learn how to use markdown [here](https://github.com/adam-p/markdown-here
 ---
 
 ![Pokemon](https://media3.giphy.com/media/1342dTzTKIkbC0/giphy.gif?cid=790b76115d0d0a7872327a6e6307d86c&rid=giphy.gif)
-    `;
-    document.getElementById('inputtext').innerHTML = text;
-  } // catch end
-  convert();
-} // function end
+      `;
+      document.getElementById('inputtext').innerHTML = text;
+    }
+    convert();
+  });
+}
 
 function convert() {
   let converter = new showdown.Converter(),
@@ -78,7 +88,7 @@ const titleCustom = document.querySelector('#cTitle');
               chrome.storage.sync.set({titleCustom: color.rgbaString});
             }
             catch {}
-          },
+          }
 });
 
 const textCustom = document.querySelector('#cText'),
@@ -96,7 +106,7 @@ const textCustom = document.querySelector('#cText'),
               chrome.storage.sync.set({textCustom: color.rgbaString});
             }
             catch {}
-          },
+          }
 });
 
 const highCustom = document.querySelector('#cHigh'),
@@ -114,7 +124,7 @@ const highCustom = document.querySelector('#cHigh'),
               chrome.storage.sync.set({highCustom: color.rgbaString});
             }
             catch {}
-          },
+          }
 });
 
 const quoteCustom = document.querySelector('#cQuote'),
@@ -132,7 +142,7 @@ const quoteCustom = document.querySelector('#cQuote'),
               chrome.storage.sync.set({quoteCustom: color.rgbaString});
             }
             catch {}
-          },
+          }
 });
 
 const bgCustom = document.querySelector('#cBg'),
@@ -150,7 +160,7 @@ const bgCustom = document.querySelector('#cBg'),
               chrome.storage.sync.set({bgCustom: color.rgbaString});
             }
             catch {}
-          },
+          }
 });
 
 const resetCustom = document.querySelector('#cReset');
@@ -182,7 +192,7 @@ resetCustom.addEventListener('click',()=>{
 var timer;
 window.addEventListener('keyup',()=>{
   clearTimeout(timer);
-  timer = setTimeout(savetoGoogle, 1000)
+  timer = setTimeout(savetoGoogle, 1000);
 });
 
 function savetoGoogle() {
@@ -191,6 +201,6 @@ function savetoGoogle() {
     chrome.storage.sync.set({key: value});
   }
   catch {
-    console.log('not able to connect to Google.')
+    console.log('not able to connect to Google.');
   }
 }
