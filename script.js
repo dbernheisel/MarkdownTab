@@ -3,28 +3,27 @@ window.addEventListener("load", getInfo);
 document.getElementById('inputtext').addEventListener('keyup',convert);
 document.getElementById("togglebutton").onclick = ()=>togglewindow();
 
-
 function getInfo() {
   chrome.storage.sync.get(['key', 'titleCustom', 'textCustom', 'highCustom', 'quoteCustom', 'bgCustom'], (result) => {
     if(result.key !== undefined) {
       document.getElementById('inputtext').innerHTML = result.key;
-
-      if(result.titleCustom !== undefined){
-        document.documentElement.style.setProperty('--blue', result.titleCustom);
-      }
-      if(result.textCustom !== undefined){
-        document.documentElement.style.setProperty('--light-text', result.textCustom);
-      }
-      if(result.highCustom !== undefined){
-        document.documentElement.style.setProperty('--green', result.highCustom);
-      }
-      if(result.quoteCustom !== undefined){
-        document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
-      }
-      if(result.bgCustom !== undefined){
-        document.documentElement.style.setProperty('--light-bg', result.bgCustom);
-      }
     }
+    if(result.titleCustom !== undefined){
+      document.documentElement.style.setProperty('--blue', result.titleCustom);
+    }
+    if(result.textCustom !== undefined){
+      document.documentElement.style.setProperty('--light-text', result.textCustom);
+    }
+    if(result.highCustom !== undefined){
+      document.documentElement.style.setProperty('--green', result.highCustom);
+    }
+    if(result.quoteCustom !== undefined){
+      document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
+    }
+    if(result.bgCustom !== undefined){
+      document.documentElement.style.setProperty('--light-bg', result.bgCustom);
+    }
+
     else {
       var text = `
 # Hello Markdown Tab
