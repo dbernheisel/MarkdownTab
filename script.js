@@ -8,13 +8,13 @@ function getInfo(){
   try{
     chrome.storage.sync.get(['key'], (result) => document.getElementById('inputtext').innerHTML = result.key);
 
-    chrome.storage.sync.get(['titleCustom', 'textCustom', 'highCustom', 'quoteCustom'], (result) => {
+    chrome.storage.sync.get(['titleCustom', 'textCustom', 'highCustom', 'quoteCustom', 'bgCustom'], (result) => {
       document.documentElement.style.setProperty('--blue', result.titleCustom);
       document.documentElement.style.setProperty('--light-text', result.textCustom);
       document.documentElement.style.setProperty('--green', result.highCustom);
       document.documentElement.style.setProperty('--dark-text', result.quoteCustom);
+      document.documentElement.style.setProperty('--dark-bg', result.bgCustom);
     });
-
   }
   catch{
     var text = `
@@ -135,6 +135,24 @@ const quoteCustom = document.querySelector('#cQuote'),
           },
 });
 
+const bgCustom = document.querySelector('#cBg'),
+      popupBg = new Picker({
+          parent: bgCustom,
+          popup: 'top',
+          color: '292d34',
+          alpha: false,
+          editor: false,
+          editorFormat: 'hex',
+          onDone: function(color) {
+            bgCustom.style.color = color.rgbaString;
+            document.documentElement.style.setProperty('--light-bg', color.rgbaString);
+            try {
+              chrome.storage.sync.set({bgCustom: color.rgbaString});
+            }
+            catch {}
+          },
+});
+
 const resetCustom = document.querySelector('#cReset');
 resetCustom.addEventListener('click',()=>{
   titleCustom.style.color = '#5187b3';
@@ -144,13 +162,16 @@ resetCustom.addEventListener('click',()=>{
   highCustom.style.backgroundColor = '#90b876';
   document.documentElement.style.setProperty('--green','#90b876');
   quoteCustom.style.color = '#555555';
-  document.documentElement.style.setProperty('--dark-text', '#555555');
+  document.documentElement.style.setProperty('--dark-text','#555555');
+  bgCustom.style.color = '#292d34';
+  document.documentElement.style.setProperty('--light-bg','#292d34');
   try {
     chrome.storage.sync.set({
       titleCustom: '#5187b3',
       textCustom: '#a0a7b3',
       highCustom: '#90b876',
-      quoteCustom: '#555555'
+      quoteCustom: '#555555',
+      bgCustom: '#292d34'
     });
   }
   catch {}
