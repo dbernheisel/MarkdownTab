@@ -23,7 +23,7 @@ body{
   font-size: 14px;
   line-height: 2;
   color: var(--light-text);
-  background: var(--dark-bg);
+  background: var(--light-bg);
 }
 
 a{
@@ -94,7 +94,6 @@ WINDOWS STYLING
 #output{
   float: right;
   overflow: scroll;
-  background: var(--light-bg);
 }
 
 #markdowntext {
@@ -135,16 +134,16 @@ textarea {
 }
 
 #customColor {
-  height:15%;
   padding: 20px 50px;
-
+  text-align: center;
+  color: white;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 #customColor ul{
-  margin: 0px auto;
+  margin: 10px auto;
   padding: 0px;
   width: 90%;
   display: block;
@@ -165,17 +164,33 @@ textarea {
   color: var(--blue);
 }
 
+#customColor li:nth-child(2) {
+  color: var(--light-text);
+}
+
 #customColor li:nth-child(3) {
   background: var(--green);
   color: var(--light-bg);
 }
 
 #customColor li:nth-child(4) {
-  color: var(--dark-text);
+  background-color: var(--light-text);
+  color: var(--light-bg);
 }
 
 #customColor li:nth-child(5) {
-  color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+#customColor li:nth-child(6) {
+  color: #5d5300;
+  background: #eddb46;
+  text-align: center;
+}
+
+#customColor li:nth-child(6):hover {
+  background: #5d5300;
+  color: #eddb46;
 }
 
 /*
