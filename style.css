@@ -1,15 +1,10 @@
-/*
-BASE STYLING
-*/
 
 :root {
-  --dark-bg: #1b1d21;
-  --medium-bg: #23262b;
-  --light-bg: #292d34;
-  --dark-text: #555555;
-  --light-text: #a0a7b3;
-  --green: #90b876;
-  --blue:#5187b3;
+  --background-color: #171e28;
+  --title-color:#5187b3;
+  --text-color: #a0a7b3;
+  --quote-color: #555555;
+  --highlights-color: #90b876;
 }
 
 html, body{
@@ -20,14 +15,14 @@ html, body{
 
 body{
   font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 2;
-  color: var(--light-text);
-  background: var(--light-bg);
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
 a{
-  color: var(--green);
+  color: var(--highlights-color);
   text-decoration: none;
   padding-bottom: 5px;
   border-bottom: 1px dotted;
@@ -35,26 +30,26 @@ a{
 
 b, strong {
   font-size: 20px;
-  color: var(--green);
+  color: var(--highlights-color);
 }
 
 em {
-  background: var(--green);
-  color: var(--light-bg);
+  background: var(--highlights-color);
+  color: var(--background-color);
   padding: 5px 10px;
 }
 
 blockquote {
-  border-left: 2px solid var(--light-text);
+  border-left: 2px solid var(--text-color);
   padding-left:30px;
   margin: 50px 0px;
-  color: var(--dark-text);
+  color: var(--quote-color);
 }
 
 blockquote li{
   list-style-type: none;
   font-size: 20px;
-  color: var(--light-text);
+  color: var(--text-color);
 }
 
 blockquote li, blockquote ul{
@@ -63,7 +58,7 @@ blockquote li, blockquote ul{
 }
 
 h1 {
-  color: var(--blue);
+  color: var(--title-color);
   margin: 0px;
   padding: 0px;
 }
@@ -97,9 +92,8 @@ WINDOWS STYLING
 }
 
 #markdowntext {
-  padding:  75px 0px;
+  padding:  50px;
   margin: auto;
-  width: 90%;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
@@ -108,7 +102,7 @@ WINDOWS STYLING
 #markdowntext img{
   max-width:100%;
   display: block;
-  margin: 75px auto;
+  margin: 50px auto;
 }
 
 #markdowntext hr {
@@ -119,7 +113,7 @@ WINDOWS STYLING
 
 textarea {
   width: 100%;
-  height: 75%;
+  height: calc(100vh - 200px);
   padding: 50px;
   font-size: 14px;
   font-weight: normal;
@@ -134,8 +128,9 @@ textarea {
 }
 
 #customColor {
-  padding: 20px 50px;
-  text-align: center;
+  height: 200px;
+  width: 100%;
+  padding: 30px;
   color: white;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -145,74 +140,74 @@ textarea {
 #customColor ul{
   margin: 10px auto;
   padding: 0px;
-  width: 90%;
-  display: block;
-  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #customColor li{
-  margin-right: 10px;
-  padding: 0px 5px;
-  width: 85px;
+  width: 20%;
+  text-align: center;
   cursor: pointer;
   list-style-type: none;
-  float: left;
 }
 
-#customColor li:nth-child(1) {
+#cTitle {
   font-weight: bold;
-  color: var(--blue);
+  color: var(--title-color);
 }
 
-#customColor li:nth-child(2) {
-  color: var(--light-text);
+#cText {
+  color: var(--text-color);
 }
 
-#customColor li:nth-child(3) {
-  background: var(--green);
-  color: var(--light-bg);
+#cBg {
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
-#customColor li:nth-child(4) {
-  background-color: var(--light-text);
-  color: var(--light-bg);
+#cQuote {
+  color: var(--quote-color);
 }
 
-#customColor li:nth-child(5) {
-  color: var(--dark-text);
+#cHigh {
+  background: var(--highlights-color);
+  color: var(--background-color);
 }
 
-#customColor li:nth-child(6) {
+
+#cReset {
   color: #5d5300;
   background: #eddb46;
   text-align: center;
+  width: 100% !important;
+  margin-top: 10px;
+  padding: 10px 0px;
 }
 
-#customColor li:nth-child(6):hover {
+#cReset:hover {
   background: #5d5300;
   color: #eddb46;
 }
 
 /*
 BUTTON STYLING
-*/
+ */
 
-input[type=button]{
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-}
-
-.toggletext {
-  font-size: 16px;
-  background: var(--medium-bg);
-  color: var(--light-text);
+#togglebutton {
+  padding: 20px;
+  line-height: 10px;
+  font-size: 20px;
   float: left;
-  outline: none;
-
+  width: 20px;
+  color: var(--text-color);
+  cursor: pointer;
+  border-bottom: none;
 }
-.toggletext:hover{
-  background: var(--dark-bg);
+
+#togglebutton:hover{
+  color: var(--title-color);
 }
 
 .close{
@@ -224,5 +219,36 @@ input[type=button]{
 }
 
 .expandtext{
-  width: 70% !important;
+  width: 600px !important;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  #customColor li{
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #customColor li{
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .expandtext{
+    width: 90% !important;
+  }
+
+  #customColor li{
+    width: 50%;
+  }
+
+  textarea {
+    height: calc(100vh - 250px);
+  }
+
+  #customColor {
+    height: 250px;
+  }
 }

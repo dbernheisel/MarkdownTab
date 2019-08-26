@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Markdown Tab",
-  "description": "A Markdown page that comes up everytime we open a new tab to take notes, keep lists, save links, be reminded of pictures, or quotes",
+  "description": "A Markdown document when you open a new tab. Syncs with all your devices.",
   "icons": { "300": "icon.png"},
-  "version": "1.2.8",
+  "version": "1.2.10",
   "permissions": [ "storage" ],
   "chrome_url_overrides" : {
    "newtab": "index.html"
