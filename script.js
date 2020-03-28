@@ -64,7 +64,10 @@ function convert() {
   let text      = document.getElementById("inputtext").value,
       html      = converter.makeHtml(text);
 
-  document.getElementById("markdowntext").innerHTML = html;
+  document.getElementById('markdowntext').innerHTML = html;
+  document.querySelectorAll('code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
 }
 
 function togglewindow(){
