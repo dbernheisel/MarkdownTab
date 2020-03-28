@@ -46,9 +46,25 @@ chrome.storage.sync.get(['key', 'titleCustom', 'textCustom', 'highCustom', 'quot
 });
 }
 
+const options = {
+  simplifiedAutoLink: true,
+  excludeTrailingPuncuationFromURLs: true,
+  literalMidWordUnderscores: true,
+  literalMidWordAsterisks: true,
+  strikethrough: true,
+  tables: true,
+  tasklists: true,
+  requireSpaceBeforeHeadingText: true,
+  disableForced4SpacesIndentedSublists: true,
+  parseImgDimensions: true,
+
+}
+
 function convert() {
-  let converter = new showdown.Converter(),
-      text      = document.getElementById("inputtext").value,
+  let converter = new showdown.Converter(options)
+  converter.setFlavor("github");
+
+  let text      = document.getElementById("inputtext").value,
       html      = converter.makeHtml(text);
 
   document.getElementById('markdowntext').innerHTML = html;
