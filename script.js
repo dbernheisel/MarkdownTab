@@ -1,6 +1,7 @@
-
-document.getElementById('inputtext').addEventListener('keyup',convert);
-document.getElementById("togglebutton").onclick = ()=>togglewindow();
+window.markdownSettings = {}
+document.getElementById("inputtext").addEventListener("keyup", convert);
+document.getElementById("togglebutton").onclick = () => togglewindow();
+document.getElementById("settingsToggle").onclick = () => toggleSettings();
 
 var text = `
 # Hello Markdown Tab
@@ -26,48 +27,44 @@ You can learn how to use markdown [here](https://github.com/adam-p/markdown-here
 `;
 
 window.onload = ()=>{
-chrome.storage.sync.get(['key', 'titleCustom', 'textCustom', 'highCustom', 'quoteCustom', 'bgCustom'], (result) => {
-  // TEXT
-  if(result.key !== undefined) {
-    document.getElementById('inputtext').innerHTML = result.key;
-  }
-  else {
-    document.getElementById('inputtext').innerHTML = text;
-  }
+  chrome.storage.sync.get(["key", "titleCustom", "textCustom", "highCustom", "quoteCustom", "bgCustom", "settings"], (result) => {
+    // TEXT
+    if(result.key !== undefined) {
+      document.getElementById("inputtext").innerHTML = result.key;
+    }
+    else {
+      document.getElementById("inputtext").innerHTML = text;
+    }
 
-  // COLORS
-  if( result.bgCustom ) document.documentElement.style.setProperty('--background-color', result.bgCustom);
-  if(result.titleCustom !== undefined) document.documentElement.style.setProperty('--title-color', result.titleCustom);
-  if(result.textCustom !== undefined) document.documentElement.style.setProperty('--text-color', result.textCustom);
-  if(result.quoteCustom !== undefined) document.documentElement.style.setProperty('--quote-color', result.quoteCustom);
-  if(result.highCustom !== undefined) document.documentElement.style.setProperty('--highlights-color', result.highCustom);
+    // SETTINGS
+    if(result.settings !== undefined) {
+      document.getElementById("cMarkdown").innerHTML = result.settings;
+      window.markdownSettings = JSON.parse(result.settings);
+    }
+    else {
+      document.getElementById("cMarkdown").innerHTML = "{}";
+    }
 
-  convert();
-});
-}
+    // COLORS
+    if( result.bgCustom ) document.documentElement.style.setProperty("--background-color", result.bgCustom);
+    if(result.titleCustom !== undefined) document.documentElement.style.setProperty("--title-color", result.titleCustom);
+    if(result.textCustom !== undefined) document.documentElement.style.setProperty("--text-color", result.textCustom);
+    if(result.quoteCustom !== undefined) document.documentElement.style.setProperty("--quote-color", result.quoteCustom);
+    if(result.highCustom !== undefined) document.documentElement.style.setProperty("--highlights-color", result.highCustom);
 
-const options = {
-  simplifiedAutoLink: true,
-  excludeTrailingPuncuationFromURLs: true,
-  literalMidWordUnderscores: true,
-  literalMidWordAsterisks: true,
-  strikethrough: true,
-  tables: true,
-  tasklists: true,
-  requireSpaceBeforeHeadingText: true,
-  disableForced4SpacesIndentedSublists: true,
-  parseImgDimensions: true,
-
+    convert();
+  });
 }
 
 function convert() {
+  let {flavor, ...options} = window.markdownSettings
   let converter = new showdown.Converter(options)
-  converter.setFlavor("github");
+  if(flavor) { converter.setFlavor(flavor); }
 
   let text      = document.getElementById("inputtext").value,
       html      = converter.makeHtml(text);
 
-  document.getElementById('markdowntext').innerHTML = html;
+  document.getElementById("markdowntext").innerHTML = html;
 }
 
 function togglewindow(){
@@ -76,26 +73,30 @@ function togglewindow(){
   document.getElementById("markdowntext").classList.toggle("expandtext");
 }
 
+function toggleSettings(){
+  document.getElementById("settings").classList.toggle("open");
+}
+
 //
 // COLOR PICKERS
 //
 
-const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-const titleColor = getComputedStyle(document.documentElement).getPropertyValue('--title-color');
-const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
-const quoteColor = getComputedStyle(document.documentElement).getPropertyValue('--quote-color');
-const highlightsColor = getComputedStyle(document.documentElement).getPropertyValue('--highlights-color');
+const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue("--background-color");
+const titleColor = getComputedStyle(document.documentElement).getPropertyValue("--title-color");
+const textColor = getComputedStyle(document.documentElement).getPropertyValue("--text-color");
+const quoteColor = getComputedStyle(document.documentElement).getPropertyValue("--quote-color");
+const highlightsColor = getComputedStyle(document.documentElement).getPropertyValue("--highlights-color");
 
-const bgCustom = document.querySelector('#cBg'),
+const bgCustom = document.querySelector("#cBg"),
       popupBg = new Picker({
           parent: bgCustom,
-          popup: 'top',
+          popup: "top",
           color: backgroundColor,
           alpha: false,
           editor: true,
-          editorFormat: 'hex',
+          editorFormat: "hex",
           onDone: function(color) {
-            document.documentElement.style.setProperty('--background-color', color.rgbaString);
+            document.documentElement.style.setProperty("--background-color", color.rgbaString);
             try {
               chrome.storage.sync.set({bgCustom: color.rgbaString});
             }
@@ -103,16 +104,16 @@ const bgCustom = document.querySelector('#cBg'),
           }
 });
 
-const titleCustom = document.querySelector('#cTitle');
+const titleCustom = document.querySelector("#cTitle");
       popupTitle = new Picker({
           parent: titleCustom,
-          popup: 'top',
+          popup: "top",
           color: titleColor,
           alpha: false,
           editor: true,
-          editorFormat: 'hex',
+          editorFormat: "hex",
           onDone: function(color) {
-            document.documentElement.style.setProperty('--title-color', color.rgbaString);
+            document.documentElement.style.setProperty("--title-color", color.rgbaString);
             try {
               chrome.storage.sync.set({titleCustom: color.rgbaString});
             }
@@ -120,16 +121,16 @@ const titleCustom = document.querySelector('#cTitle');
           }
 });
 
-const textCustom = document.querySelector('#cText'),
+const textCustom = document.querySelector("#cText"),
       popupText = new Picker({
           parent: textCustom,
-          popup: 'top',
+          popup: "top",
           color: textColor,
           alpha: false,
           editor: true,
-          editorFormat: 'hex',
+          editorFormat: "hex",
           onDone: function(color) {
-            document.documentElement.style.setProperty('--text-color', color.rgbaString);
+            document.documentElement.style.setProperty("--text-color", color.rgbaString);
             try {
               chrome.storage.sync.set({textCustom: color.rgbaString});
             }
@@ -137,16 +138,17 @@ const textCustom = document.querySelector('#cText'),
           }
 });
 
-const quoteCustom = document.querySelector('#cQuote'),
+
+const quoteCustom = document.querySelector("#cQuote"),
       popupQuote = new Picker({
           parent: quoteCustom,
-          popup: 'top',
+          popup: "top",
           color: quoteColor,
           alpha: false,
           editor: true,
-          editorFormat: 'hex',
+          editorFormat: "hex",
           onDone: function(color) {
-            document.documentElement.style.setProperty('--quote-color', color.rgbaString);
+            document.documentElement.style.setProperty("--quote-color", color.rgbaString);
             try {
               chrome.storage.sync.set({quoteCustom: color.rgbaString});
             }
@@ -154,16 +156,16 @@ const quoteCustom = document.querySelector('#cQuote'),
           }
 });
 
-const highCustom = document.querySelector('#cHigh'),
+const highCustom = document.querySelector("#cHigh"),
       popupHigh = new Picker({
           parent: highCustom,
-          popup: 'top',
+          popup: "top",
           color: highlightsColor,
           alpha: false,
           editor: true,
-          editorFormat: 'hex',
+          editorFormat: "hex",
           onDone: function(color) {
-            document.documentElement.style.setProperty('--highlights-color', color.rgbaString);
+            document.documentElement.style.setProperty("--highlights-color", color.rgbaString);
             try {
               chrome.storage.sync.set({highCustom: color.rgbaString});
             }
@@ -171,13 +173,13 @@ const highCustom = document.querySelector('#cHigh'),
           }
 });
 
-const resetCustom = document.querySelector('#cReset');
-resetCustom.addEventListener('click',()=>{
-  document.documentElement.style.setProperty('--background-color', backgroundColor);
-  document.documentElement.style.setProperty('--title-color', titleColor);
-  document.documentElement.style.setProperty('--text-color', textColor);
-  document.documentElement.style.setProperty('--quote-color', quoteColor);
-  document.documentElement.style.setProperty('--highlights-color', highlightsColor);
+const resetCustom = document.querySelector("#cReset");
+resetCustom.addEventListener("click",()=>{
+  document.documentElement.style.setProperty("--background-color", backgroundColor);
+  document.documentElement.style.setProperty("--title-color", titleColor);
+  document.documentElement.style.setProperty("--text-color", textColor);
+  document.documentElement.style.setProperty("--quote-color", quoteColor);
+  document.documentElement.style.setProperty("--highlights-color", highlightsColor);
 
   try {
     chrome.storage.sync.set({
@@ -185,7 +187,8 @@ resetCustom.addEventListener('click',()=>{
       titleCustom: titleColor,
       textCustom: textColor,
       quoteCustom: quoteColor,
-      highCustom: highlightsColor
+      highCustom: highlightsColor,
+      settings: "{}"
     });
   }
   catch {}
@@ -194,17 +197,34 @@ resetCustom.addEventListener('click',()=>{
 // GOOGLE SYNC SAVE
 
 var timer;
-window.addEventListener('keyup',()=>{
+
+document.getElementById("inputtext").addEventListener("keyup", () => {
   clearTimeout(timer);
   timer = setTimeout(savetoGoogle, 1000);
 });
 
+document.getElementById("cMarkdown").addEventListener("keyup", () => {
+  clearTimeout(timer);
+  timer = setTimeout(saveSettingsToGoogle, 1000);
+})
+
 function savetoGoogle() {
-  var value = document.getElementById("inputtext").value;
-  try{
+  try {
+    var value = document.getElementById("inputtext").value;
     chrome.storage.sync.set({key: value});
+    console.log("Saved Markdown")
+  } catch {
+    console.error("Not able to connect to Google.");
   }
-  catch {
-    console.log('not able to connect to Google.');
+}
+
+function saveSettingsToGoogle() {
+  try {
+    const value = document.getElementById("cMarkdown").value;
+    window.markdownSettings = JSON.parse(value);
+    chrome.storage.sync.set({settings: value});
+    console.log("Saved settings")
+  } catch {
+    console.error("Invalid settings JSON")
   }
 }

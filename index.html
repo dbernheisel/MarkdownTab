@@ -8,22 +8,35 @@
 <body>
 
 <div id="input" class="close section">
-  <textarea id="inputtext">
-  </textarea>
+  <div id="editor">
+    <div id="settingsFab">
+      <button id="settingsToggle">Settings</button>
+    </div>
 
-  <div id="customColor">
-    Custom Colors:
-    <ul>
-      <li id="cTitle"> Title </li>
-      <li id="cText"> Text </li>
-      <li id="cBg"> Background </li>
-      <li id="cQuote"> Quotes </li>
-      <li id="cHigh"> Highlights </li>
-      <li id="cReset"> Reset </li>
-    </ul>
+    <div id="inputContainer">
+      <textarea id="inputtext">
+      </textarea>
+    </div>
 
+    <div id="settings">
+      <div id="customSettings">
+        Markdown Options:
+        <textarea id="cMarkdown"></textarea>
+      </div>
+
+      <div id="customColor">
+        Custom Colors:
+        <ul>
+          <li id="cTitle"> Title </li>
+          <li id="cText"> Text </li>
+          <li id="cBg"> Background </li>
+          <li id="cQuote"> Quotes </li>
+          <li id="cHigh"> Highlights </li>
+          <li id="cReset"> Reset </li>
+        </ul>
+      </div>
+    </div>
   </div>
-
 </div>
 
 <div id="output" class="expand section">
