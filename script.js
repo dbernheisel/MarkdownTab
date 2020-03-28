@@ -65,6 +65,9 @@ function convert() {
       html      = converter.makeHtml(text);
 
   document.getElementById("renderedMarkdown").innerHTML = html;
+  document.querySelectorAll('code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
 }
 
 function toggleWindow(){
