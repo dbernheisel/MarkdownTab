@@ -1,6 +1,6 @@
 window.markdownSettings = {}
-document.getElementById("inputtext").addEventListener("keyup", convert);
-document.getElementById("togglebutton").onclick = () => togglewindow();
+document.getElementById("markdown").addEventListener("keyup", convert);
+document.getElementById("toggleButton").onclick = () => toggleWindow();
 document.getElementById("settingsToggle").onclick = () => toggleSettings();
 
 var text = `
@@ -30,19 +30,19 @@ window.onload = ()=>{
   chrome.storage.sync.get(["key", "titleCustom", "textCustom", "highCustom", "quoteCustom", "bgCustom", "settings"], (result) => {
     // TEXT
     if(result.key !== undefined) {
-      document.getElementById("inputtext").innerHTML = result.key;
+      document.getElementById("markdown").innerHTML = result.key;
     }
     else {
-      document.getElementById("inputtext").innerHTML = text;
+      document.getElementById("markdown").innerHTML = text;
     }
 
     // SETTINGS
     if(result.settings !== undefined) {
-      document.getElementById("cMarkdown").innerHTML = result.settings;
+      document.getElementById("markdown-settings").innerHTML = result.settings;
       window.markdownSettings = JSON.parse(result.settings);
     }
     else {
-      document.getElementById("cMarkdown").innerHTML = "{}";
+      document.getElementById("markdown-settings").innerHTML = "{}";
     }
 
     // COLORS
@@ -61,20 +61,21 @@ function convert() {
   let converter = new showdown.Converter(options)
   if(flavor) { converter.setFlavor(flavor); }
 
-  let text      = document.getElementById("inputtext").value,
+  let text      = document.getElementById("markdown").value,
       html      = converter.makeHtml(text);
 
-  document.getElementById("markdowntext").innerHTML = html;
+  document.getElementById("renderedMarkdown").innerHTML = html;
 }
 
-function togglewindow(){
-  document.getElementById("input").classList.toggle("close");
-  document.getElementById("output").classList.toggle("expand");
-  document.getElementById("markdowntext").classList.toggle("expandtext");
+function toggleWindow(){
+  document.getElementById("editor").classList.toggle("hidden");
+  document.getElementById("editor").classList.toggle("w-1/2");
+  document.getElementById("rendered").classList.toggle("w-1/2");
+  document.getElementById("rendered").classList.toggle("w-screen");
 }
 
 function toggleSettings(){
-  document.getElementById("settings").classList.toggle("open");
+  document.getElementById("settings").classList.toggle("hidden");
 }
 
 //
@@ -198,29 +199,29 @@ resetCustom.addEventListener("click",()=>{
 
 var timer;
 
-document.getElementById("inputtext").addEventListener("keyup", () => {
+document.getElementById("markdown").addEventListener("keyup", () => {
   clearTimeout(timer);
   timer = setTimeout(savetoGoogle, 1000);
 });
 
-document.getElementById("cMarkdown").addEventListener("keyup", () => {
+document.getElementById("markdown-settings").addEventListener("keyup", () => {
   clearTimeout(timer);
   timer = setTimeout(saveSettingsToGoogle, 1000);
 })
 
 function savetoGoogle() {
   try {
-    var value = document.getElementById("inputtext").value;
+    var value = document.getElementById("markdown").value;
     chrome.storage.sync.set({key: value});
     console.log("Saved Markdown")
   } catch {
     console.error("Not able to connect to Google.");
   }
 }
-
+//
 function saveSettingsToGoogle() {
   try {
-    const value = document.getElementById("cMarkdown").value;
+    const value = document.getElementById("markdown-settings").value;
     window.markdownSettings = JSON.parse(value);
     chrome.storage.sync.set({settings: value});
     console.log("Saved settings")

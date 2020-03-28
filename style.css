@@ -7,102 +7,103 @@
   --highlights-color: #90b876;
 }
 
-html, body{
-  padding: 0px;
-  margin: 0px;
-  height: 100%;
-}
-
-body{
-  font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
-  font-size: 13px;
+#renderedMarkdown {
+  font-size: 1.25em;
   line-height: 2;
   color: var(--text-color);
   background: var(--background-color);
+  overflow-wrap: break-word;
 }
 
-a{
+#renderedMarkdown a {
   color: var(--highlights-color);
   text-decoration: none;
-  padding-bottom: 5px;
   border-bottom: 1px dotted;
+  overflow-x: scroll;
 }
 
-b, strong {
-  font-size: 20px;
+#renderedMarkdown b, strong {
+  font-weight: bold;
   color: var(--highlights-color);
 }
 
-em {
-  background: var(--highlights-color);
-  color: var(--background-color);
-  padding: 5px 10px;
+#renderedMarkdown em {
+  font-style: italic;
+  color: var(--highlights-color);
 }
 
-blockquote {
+#renderedMarkdown blockquote {
   border-left: 2px solid var(--text-color);
-  padding-left:30px;
-  margin: 50px 0px;
+  padding-left: 2em;
+  margin: 2em 0;
   color: var(--quote-color);
 }
 
-blockquote li{
-  list-style-type: none;
-  font-size: 20px;
-  color: var(--text-color);
+#renderedMarkdown p {
+  margin: 1em 0 1em 0;
 }
 
-blockquote li, blockquote ul{
-  margin: 0px;
-  padding: 0px;
+#renderedMarkdown ul, #renderedMarkdown ol {
+  margin: 0.5em 0 1.5em 2em;
 }
 
-h1 {
+#renderedMarkdown ul { list-style-type: disc; }
+#renderedMarkdown ul ul { list-style-type: circle; }
+#renderedMarkdown ul ul ul { list-style-type: square; }
+#renderedMarkdown ul ul ul ul { list-style-type: disc; }
+#renderedMarkdown ul ul ul ul ul { list-style-type: circle; }
+#renderedMarkdown ul ul ul ul ul ul { list-style-type: square; }
+
+#renderedMarkdown ol { list-style-type: decimal; }
+#renderedMarkdown ol ol { list-style-type: upper-alpha; }
+#renderedMarkdown ol ol ol { list-style-type: upper-roman; }
+#renderedMarkdown ol ol ol ol { list-style-type: lower-alpha; }
+#renderedMarkdown ol ol ol ol ol { list-style-type: lower-roman; }
+#renderedMarkdown ol ol ol ol ol ol { list-style-type: lower-greek; }
+
+#renderedMarkdown pre {
+  overflow: auto;
+  background-color: #333;
+  padding: 6px 10px;
+  border: 1px solid #222;
+  border-radius: 3px;
+}
+
+#renderedMarkdown pre code {
+  white-space: pre;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+#renderedMarkdown code, #renderedMarkdown tt {
+  white-space: nowrap;
+  background-color: #333;
+  border: 1px solid #222;
+  border-radius: 3px;
+  padding: 0 5px;
+}
+
+#renderedMarkdown h1 {
   color: var(--title-color);
-  margin: 0px;
-  padding: 0px;
+  font-size: 2em;
+  margin: 0 0 0.5em 0;
+  padding: 0;
 }
 
-h2, h3, h4, h5 {
-  margin: 0px;
-  padding: 0px;
-}
-
-ul{
-  margin-bottom: 50px;
+#renderedMarkdown h2, h3, h4, h5 {
+  font-size: 1.5em;
+  margin: 0 0 0.5em 0;
+  padding: 0;
 }
 
 /*
 WINDOWS STYLING
 */
 
-.section{
-  width: 50%;
-  height: 100%;
-  margin: 0px;
-}
-
-#input{
-  float: left;
-  position: absolute;
-}
-
-#output{
-  float: right;
-  overflow: scroll;
-}
-
-#markdowntext {
-  padding:  50px;
-  margin: auto;
-  height: 100%;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
 #markdowntext img{
-  max-width:100%;
+  max-width: 100%;
   display: block;
   margin: 50px auto;
 }
@@ -115,63 +116,6 @@ WINDOWS STYLING
   margin: 50px 0px !important;
   height: 0px;
   border: 1px solid;
-}
-
-#editor {
-  position: relative;
-  display: flex;
-  height: 100%;
-  align-items: stretch;
-  flex-wrap: wrap;
-  flex-shrink: 1;
-}
-
-#settingsFab {
-  position: absolute;
-  bottom: 0.5em;
-  right: 1.5em;
-}
-
-#settingsText{
-  width: 100%;
-  height: 150px;
-}
-
-#inputtext {
-  width: 100%;
-  height: 100%;
-  padding: 40px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  resize: none;
-  border: none;
-
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
-#customColor {
-  width: 100%;
-  padding: 10px;
-  color: white;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
-#customColor ul{
-  margin: 10px auto;
-  padding: 0px;
-  width: 100%;
-}
-
-#customColor li{
-  width: 20%;
-  text-align: center;
-  cursor: pointer;
-  list-style-type: none;
 }
 
 #cTitle {
@@ -197,94 +141,15 @@ WINDOWS STYLING
   color: var(--background-color);
 }
 
-#cMarkdown {
-  width: 100%;
-  height: 150px;
-}
-
-
-#cReset {
-  color: #5d5300;
-  background: #eddb46;
-  text-align: center;
-  width: 100% !important;
-  margin-top: 10px;
-  padding: 10px 0px;
-}
-
-#cReset:hover {
-  background: #5d5300;
-  color: #eddb46;
-}
-
 /*
 BUTTON STYLING
  */
 
-#togglebutton {
-  padding: 20px;
-  line-height: 10px;
-  font-size: 20px;
-  float: left;
-  width: 20px;
+#toggleButton {
   color: var(--text-color);
-  cursor: pointer;
-  border-bottom: none;
 }
 
-#togglebutton:hover{
+#toggleButton:hover{
   color: var(--title-color);
 }
 
-.close{
-  display: none !important;
-}
-
-.expand{
-  width: 100% !important;
-}
-
-.expandtext{
-  width: 600px !important;
-}
-
-#settings {
-  display: none;
-  width: 100%;
-}
-
-#settings.open {
-  display: block;
-}
-
-#settingsBar {
-  width: 100%;
-}
-
-#customSettings{
-  color: white;
-  padding: 10px;
-}
-
-
-@media only screen and (max-width: 1200px) {
-  #customColor li{
-    width: 25%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  #customColor li{
-    width: 33%;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .expandtext{
-    width: 90% !important;
-  }
-
-  #customColor li{
-    width: 50%;
-  }
-}
