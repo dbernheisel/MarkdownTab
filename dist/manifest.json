@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "NewTab Markdown",
+  "version": "1.0.0",
+  "description": "A Markdown document when you open a new tab. Syncs with all your devices.",
+  "icons": {
+    "300": "icons/icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "author": "David Bernheisel",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "web_accessible_resources": [
+    "background.js.map",
+    "newtab.js.map"
+  ],
+  "homepage_url": "https://www.github.com/dbernheisel/MarkdownTab"
+}

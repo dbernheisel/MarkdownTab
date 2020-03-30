@@ -1,0 +1,47 @@
+:root {
+  --background-color: #171e28;
+  --title-color:#5187b3;
+  --text-color: #a0a7b3;
+  --quote-color: #555555;
+  --highlights-color: #90b876;
+}
+
+#cTitle {
+  font-weight: bold;
+  color: var(--title-color);
+}
+
+#cText {
+  color: var(--text-color);
+}
+
+#cBackground {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#cQuote {
+  color: var(--quote-color);
+}
+
+#cHighlights {
+  background: var(--highlights-color);
+  color: var(--background-color);
+}
+
+#editor-toggle {
+  color: var(--text-color);
+}
+
+#editor-toggle:hover{
+  color: var(--title-color);
+}
+
+#settings-toggle {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#settings-toggle:hover{
+  color: var(--title-color);
+}

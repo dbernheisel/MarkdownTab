@@ -1,0 +1,64 @@
+{
+  "name": "markdowntab",
+  "version": "1.0.0",
+  "description": "\"A Chrome Extension to replace the newtab page with notes via a Markdown editor\"",
+  "main": "src/newtab.js",
+  "dependencies": {
+    "highlight.js": "^9.18.1",
+    "lodash.debounce": "^4.0.8",
+    "markdown-it": "^10.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "vue": "^2.6.11",
+    "vue-click-outside": "^1.0.7",
+    "vue-color": "^2.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "file-loader": "^6.0.0",
+    "glob-all": "^3.2.1",
+    "html-webpack-plugin": "^4.0.3",
+    "postcss": "^7.0.27",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.2",
+    "purgecss-webpack-plugin": "^2.1.0",
+    "style-loader": "^1.1.3",
+    "svg-inline-loader": "^0.8.2",
+    "tailwindcss": "^1.2.0",
+    "vue-loader": "^15.9.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-extension-manifest-plugin": "^0.5.0"
+  },
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "lint": "eslint js --max-warnings 0 --cache --cache-location=node_modules/ --ignore-path=../.gitignore",
+    "format": "prettier --write './src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbernheisel/MarkdownTab"
+  },
+  "keywords": [
+    "chrome-extension",
+    "markdown",
+    "newtab"
+  ],
+  "author": "David Bernheisel",
+  "license": "MIT"
+}
