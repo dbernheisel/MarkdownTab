@@ -27,6 +27,7 @@
     "file-loader": "^6.0.0",
     "glob-all": "^3.2.1",
     "html-webpack-plugin": "^4.0.3",
+    "mini-css-extract-plugin": "^0.9.0",
     "postcss": "^7.0.27",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
@@ -40,6 +41,7 @@
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.11",
     "webpack-extension-manifest-plugin": "^0.5.0"
   },
@@ -48,7 +50,9 @@
     "watch": "webpack --mode development --watch",
     "lint": "eslint js --max-warnings 0 --cache --cache-location=node_modules/ --ignore-path=../.gitignore",
     "format": "prettier --write './src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stats": "rm -f stats.json; webpack --profile --json > stats.json",
+    "stats-server": "yarn run stats && NODE_ENV=production webpack-bundle-analyzer stats.json"
   },
   "repository": {
     "type": "git",

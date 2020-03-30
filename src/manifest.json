@@ -10,8 +10,8 @@
    "newtab": "newtab.html"
   },
   "web_accessible_resources": [
-    "background.js.map",
-    "newtab.js.map"
+    "newtab.js.map",
+    "newtab.css"
   ],
   "homepage_url": "https://www.github.com/dbernheisel/MarkdownTab"
 }

@@ -103,9 +103,6 @@ import ClickOutside from "vue-click-outside";
 
 import defaults  from "./defaults"
 
-import "highlight.js/styles/monokai-sublime.css";
-import "./newtab.css";
-
 export default {
   components: {
     'color-picker': ChromePicker

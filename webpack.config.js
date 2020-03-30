@@ -7,13 +7,14 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const baseManifest = require("./src/manifest.json");
 const WebpackExtensionManifestPlugin = require("webpack-extension-manifest-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 
 const purge = new PurgecssPlugin({
   paths: glob.sync([
-    path.resolve(__dirname, "./src/**/*.vue"),
-    path.resolve(__dirname, "./src/**/*.js")
+    path.resolve(__dirname, "./src/**/*"),
+    path.resolve(__dirname, "./src/**/*")
   ], { nodir: true }),
   // https://medium.com/@kyis/vue-tailwind-purgecss-the-right-way-c70d04461475#3f95
   whitelistPatterns: [
@@ -29,13 +30,25 @@ const purge = new PurgecssPlugin({
 
 module.exports = (_env, _options) => ({
   mode: devMode ? "development" : "production",
-  devtool: "cheap-module-source-map",
+  devtool: "none",
   entry: {
-    newtab: ["./src/newtab.js"],
+    newtab: ["./src/newtab.js", "./src/newtab.css"],
   },
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js"
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   },
   resolve: {
     extensions: ["*", ".js", ".vue"],
@@ -61,6 +74,9 @@ module.exports = (_env, _options) => ({
       }
     }),
     new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
     ...(devMode ? [] : [purge])
   ],
   module: {
@@ -73,23 +89,21 @@ module.exports = (_env, _options) => ({
       {
         test: /\.css$/,
         use: [
-          { loader: "vue-style-loader" },
+          "vue-style-loader",
           "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1, sourceMap: true }
-          },
-          { loader: "postcss-loader", options: { sourceMap: true } }
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader"
         ]
       },
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        use: { loader: "vue-loader", options: { hotReload: devMode } }
+        use: "vue-loader"
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: "file-loader"
       }
     ]
   }
