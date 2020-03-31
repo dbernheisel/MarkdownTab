@@ -1,3 +1,5 @@
 node_modules
+dist
 stats.json
-dist.zip
+upload.zip
+key.pem

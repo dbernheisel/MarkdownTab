@@ -4,6 +4,8 @@ A *Markdown* page that comes up __everytime__ you open a new tab
 
 If you're anything like me, you always have a browser open, and constantly opening new tabs. Since I briefly have the new tab open, I thought it would be helpful to have my notes in front of me for quick access and little reminders.
 
+[Published on the Chrome Web Store](https://chrome.google.com/webstore/detail/newtab-notes/kfbhbipgippofpifimbcnbafehjndccn)
+
 # How to use
 
 Learn you some Markdown! Specifically, [GitHub-flavored Markdown] with some extra features. Continue reading to discover those features!

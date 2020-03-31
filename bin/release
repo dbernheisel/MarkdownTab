@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Usage: ./bin/release {old_version} {new_version}
+set -e
+
+previous_version="${1}"
+release_version="${2}"
+
+echo "Updating version numbers in manifest.json and package.json"
+sed -i "s/\"version\": \"$previous_version/\"version\": \"$release_version/" src/manifest.json
+sed -i "s/\"version\": \"$previous_version/\"version\": \"$release_version/" package.json
+
+yarn build
+mkdir release
+yarn run crx pack dist -p key.pem -o "release/NewTabNotes-${release_version}.crx"
+
+git add src/manifest.json
+git add package.json
+git add "release/NewTabNotes-${release_version}.crx"
+
+git tag -a "$release_version" -m "Release version $release_version"
+git push origin "$release_version"
+
+echo "Creating upload.zip for uploading to Chrome Web Store"
+(
+  rm -f upload.zip
+  cd dist && zip -r ../upload.zip *
+)
