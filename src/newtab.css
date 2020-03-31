@@ -6,8 +6,4 @@
 @import "./css/base.css";
 @import "./css/markdown.css";
 
-/*! purgecss start ignore */
-@import "highlight.js/styles/monokai-sublime.css";
-/*! purgecss end ignore */
-
 @import "tailwindcss/utilities";

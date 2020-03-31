@@ -4,29 +4,64 @@
   --text-color: #a0a7b3;
   --quote-color: #555555;
   --highlights-color: #90b876;
+  --code-text-color: #a0a7b3;
+  --code-background-color: #23241f;
+  --code-border-color: #222222;
+  --custom-font: "Fira Code";
+  --custom-code-font: "Fira Code";
 }
 
 #cTitle {
-  font-weight: bold;
+  font-family: var(--custom-font);
+  background-color: var(--background-color);
   color: var(--title-color);
+  font-weight: bold;
 }
 
 #cText {
-  color: var(--text-color);
-}
-
-#cBackground {
+  font-family: var(--custom-font);
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
+#cBackground {
+  font-family: var(--custom-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#cCodeBackground {
+  font-family: var(--custom-code-font);
+  background-color: var(--code-background-color);
+  border: 1px solid var(--code-border-color);
+  color: var(--code-text-color);
+}
+
+#cCodeBorder {
+  font-family: var(--custom-code-font);
+  background-color: var(--code-background-color);
+  border: 1px solid var(--code-border-color);
+  color: var(--code-text-color);
+}
+
+#cCodeText {
+  font-family: var(--custom-code-font);
+  background-color: var(--code-background-color);
+  border: 1px solid var(--code-border-color);
+  color: var(--code-text-color);
+}
+
 #cQuote {
+  font-family: var(--custom-font);
+  background-color: var(--background-color);
   color: var(--quote-color);
 }
 
 #cHighlights {
-  background: var(--highlights-color);
-  color: var(--background-color);
+  font-family: var(--custom-font);
+  background-color: var(--background-color);
+  color: var(--highlights-color);
+  font-weight: bold;
 }
 
 #editor-toggle {

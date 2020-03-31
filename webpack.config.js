@@ -36,19 +36,8 @@ module.exports = (_env, _options) => ({
   },
   output: {
     path: path.join(__dirname, "dist"),
+    chunkFilename: '[name].bundle.js',
     filename: "[name].js"
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    }
   },
   resolve: {
     extensions: ["*", ".js", ".vue"],
@@ -88,6 +77,15 @@ module.exports = (_env, _options) => ({
       },
       {
         test: /\.css$/,
+        include: file => /highlight.js\/styles/.test(file) || /katex\/dist/.test(file),
+        use: [
+          { loader: "style-loader", options: { injectType: 'lazySingletonStyleTag' } },
+          "css-loader",
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: file => /highlight.js\/styles/.test(file) ||  /katex\/dist/.test(file),
         use: [
           "vue-style-loader",
           "style-loader",
@@ -102,7 +100,7 @@ module.exports = (_env, _options) => ({
         use: "vue-loader"
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(woff(2)?|png|jpg|gif|ttf|eot|svg)$/,
         use: "file-loader"
       }
     ]

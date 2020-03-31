@@ -1,6 +1,7 @@
 .rendered {
+  font-family: var(--custom-font) !important;
   font-size: 1.25em;
-  line-height: 2;
+  line-height: 2em;
   color: var(--text-color);
   background: var(--background-color);
   overflow-wrap: break-word;
@@ -36,23 +37,18 @@
 }
 
 .rendered h1:first-child { margin-top: 0em; }
-.rendered h1 b, .rendered h1 strong {
-  color: var(--title-color);
-  font-weight: bold;
-}
-.rendered h1 em {
-  color: var(--title-color);
-  font-style: italic;
-}
-.rendered h1 { font-size: 2em; margin-top: 1em; }
-.rendered h2 { font-size: 1.5em; margin-top: 0.8em; }
-.rendered h3 { font-size: 1.4em; margin-top: 0.7em; }
-.rendered h4 { font-size: 1.3em; margin-top: 0.6em; }
-.rendered h5 { font-size: 1.2em; margin-top: 0.6em; }
-.rendered h6 { font-size: 1.1em; margin-top: 0.5em; }
+.rendered h1 b, .rendered h1 strong { font-weight: bolder; }
+.rendered h1 em { font-style: italic; }
+
+.rendered h1 { font-size: 2em; margin: 1em 0; }
+.rendered h2 { font-size: 1.5em; margin: 0.8em 0; }
+.rendered h3 { font-size: 1.4em; margin: 0.7em 0; }
+.rendered h4 { font-size: 1.3em; margin: 0.6em 0; }
+.rendered h5 { font-size: 1.2em; margin: 0.6em 0; }
+.rendered h6 { font-size: 1.1em; margin: 0.5em 0; }
 
 .rendered p {
-  margin: 0.25em 0 1em 0;
+  margin: 0.25em 0 1.5em 0;
 }
 
 .rendered ul, .rendered ol {
@@ -73,26 +69,34 @@
 .rendered ol ol ol ol ol { list-style-type: lower-roman; }
 .rendered ol ol ol ol ol ol { list-style-type: lower-greek; }
 
+.rendered li { margin-bottom: 0.5em; }
+
+.rendered ul.contains-task-list { margin-left: 1em; }
+.rendered li.task-list-item { list-style: none; }
+.rendered ul.contains-task-list ul.contains-task-list { margin-left: 2em; }
+
 .rendered pre {
-  overflow: auto;
-  background-color: #333;
-  padding: 6px 10px;
-  border: 1px solid #222;
   border-radius: 3px;
+  margin-bottom: 1em;
+  overflow: auto;
+  padding: 0.5em 1em;
 }
 
 .rendered pre code {
   white-space: pre;
   margin: 0;
+  color: inherit;
   padding: 0;
   border: none;
   background: transparent;
 }
 
 .rendered code, .rendered tt {
+  background-color: var(--code-background-color);
+  color: var(--code-text-color);
+  font-family: var(--custom-code-font) !important;
   white-space: nowrap;
-  background-color: #333;
-  border: 1px solid #222;
+  border: 1px solid var(--code-border-color);
   border-radius: 3px;
   padding: 0 5px;
 }
@@ -100,12 +104,12 @@
 .rendered img{
   max-width: 100%;
   display: block;
-  margin: 50px auto;
+  margin: 3em auto;
 }
 
 .rendered hr {
-  margin: 50px 0px !important;
+  margin: 3em 0px !important;
   height: 0px;
-  border: 1px solid;
+  border: 2px solid;
 }
 

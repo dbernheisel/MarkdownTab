@@ -1,10 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "NewTab Markdown",
+  "name": "NewTab Notes",
   "version": "1.0.0",
-  "description": "A Markdown document when you open a new tab. Syncs with all your devices.",
+  "description": "A Markdown document replaces your new tab page. Syncs with all your devices.",
   "icons": {
-    "300": "icons/icon.png"
+    "16": "icons/favicon-16x16.png",
+    "32": "icons/favicon-32x32.png",
+    "192": "icons/android-chrome-192x192.png",
+    "512": "icons/android-chrome-512x512.png"
   },
   "permissions": [
     "storage"
