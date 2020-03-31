@@ -7,8 +7,8 @@
   --code-text-color: #a0a7b3;
   --code-background-color: #23241f;
   --code-border-color: #222222;
-  --custom-font: "Fira Code";
-  --custom-code-font: "Fira Code";
+  --custom-font: "sans";
+  --custom-code-font: "Fira Code, mono";
 }
 
 #cTitle {

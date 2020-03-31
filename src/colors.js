@@ -16,12 +16,12 @@ export const github = {
   name: "GitHub",
   values: {
     background: "#ffffff",
-    title: "#d73a49",
+    title: "#000000",
     text: "#333333",
-    quote: "#969896",
-    highlights: "#6f42c1",
-    "code-background": "#f8f8f8",
-    "code-border": "#eeeeee",
+    quote: "#6a737d",
+    highlights: "#000000",
+    "code-background": "#14141470",
+    "code-border": "#ffffff00",
     "code-text": "#333333"
   }
 }
