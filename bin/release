@@ -16,10 +16,8 @@ yarn run crx pack dist -p key.pem -o "release/NewTabNotes-${release_version}.crx
 
 git add src/manifest.json
 git add package.json
-git add "release/NewTabNotes-${release_version}.crx"
 
-git tag -a "$release_version" -m "Release version $release_version"
-git push origin "$release_version"
+hub release create -a "release/NewTabNotes-${release_version}.crx" -m "Release version ${release_version}" "${release_version}"
 
 (
   rm -f upload.zip
