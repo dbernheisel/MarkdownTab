@@ -19,8 +19,8 @@ export const github = {
     title: "#000000",
     text: "#333333",
     quote: "#6a737d",
-    highlights: "#000000",
-    "code-background": "#14141470",
+    highlights: "#0366d6",
+    "code-background": "#1b1f2312",
     "code-border": "#ffffff00",
     "code-text": "#333333"
   }

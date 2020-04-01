@@ -223,7 +223,7 @@
 
     <div class="flex-1 w-screen overflow-x-hidden">
       <a id="editor-toggle" @click="toggleEditor" class="float-right text-lg cursor-pointer transform rotate-90 transition duration-150">...</a>
-      <div v-html="renderedMarkdown" class="w-full h-full p-4 font-mono whitespace-normal rendered"></div>
+      <div v-html="renderedMarkdown" class="w-full h-full p-4 whitespace-normal rendered"></div>
     </div>
   </div>
 </template>
@@ -235,7 +235,7 @@ import isEqual from "lodash.isequal";
 import ClickOutside from "vue-click-outside";
 
 import { introText, markdownDefaults } from "./defaults"
-import { monokaiSublime as defaultColors, presets as colorPresets } from "./colors"
+import { github as defaultColors, presets as colorPresets } from "./colors"
 
 export default {
   components: {
@@ -249,16 +249,16 @@ export default {
   data() {
     return {
       show: {
-        editor: false,
-        settings: false,
         colorBackground: false,
         colorCodeBackground: false,
         colorCodeBorder: false,
         colorCodeText: false,
-        colorTitle: false,
-        colorText: false,
+        colorHighlights: false,
         colorQuote: false,
-        colorHighlights: false
+        colorText: false,
+        colorTitle: false,
+        editor: false,
+        settings: false
       },
       parser: new MarkdownIt(),
       tempSettings: "{}",
@@ -271,7 +271,7 @@ export default {
       tempColorQuote: defaultColors.values.quote,
       tempColorHighlights: defaultColors.values.highlights,
       markdown: "",
-      settings: "",
+      settings: markdownDefaults,
       highlightThemes: {},
       colors: defaultColors.values,
       selectedColorPreset: "",
@@ -364,7 +364,7 @@ export default {
 
     loadSaved: function(saved) {
       this.markdown = saved.markdown || introText
-      this.settings = saved.settings || markdownDefaults
+      if (saved.settings) this.settings = saved.settings
       this.colors = {...defaultColors.values, ...saved.colors}
       this.tempSettings = JSON.stringify(this.settings, null, "  ")
 
@@ -418,12 +418,18 @@ export default {
           this.show.colorText,
           this.show.colorQuote,
           this.show.colorHighlights,
+          this.show.colorCodeText,
+          this.show.colorCodeBackground,
+          this.show.colorCodeBorder
         ].some((val) => val)) {
           this.toggle("colorBackground", false)
           this.toggle("colorTitle", false)
           this.toggle("colorText", false)
           this.toggle("colorQuote", false)
           this.toggle("colorHighlights", false)
+          this.toggle("colorCodeText", false)
+          this.toggle("colorCodeBackground", false)
+          this.toggle("colorCodeBorder", false)
         } else {
           this.toggle("editor", false)
           this.toggle("settings", false)
@@ -496,7 +502,6 @@ export default {
           .then(({default: math}) => {
             import(/* webpackChunkName: "math-css" */ "katex/dist/katex.min.css")
               .then(({default: styles}) => {
-                debugger
                 this.parser.use(math)
                 styles.use()
               })
@@ -533,10 +538,9 @@ export default {
       this.save("markdown", newValue)
     },
     settings: function(newValue, old) {
-      if (old == "") return
       this.save("settings", newValue)
       this.setCss("custom-font", newValue.font)
-      this.setCss("custom-code-font", newValue.codeFont);
+      this.setCss("custom-code-font", newValue.codeFont)
       this.loadParser()
     },
     tempSettings: function(newValue, old) {
@@ -546,28 +550,28 @@ export default {
       } catch {}
     },
     tempColorText: function(newValue, _old) {
-      this.setColor("text")(newValue.hex)
+      this.setColor("text")(newValue.hex8)
     },
     tempColorTitle: function(newValue, _old) {
-      this.setColor("title")(newValue.hex)
+      this.setColor("title")(newValue.hex8)
     },
     tempColorBackground: function(newValue, _old) {
-      this.setColor("background")(newValue.hex)
+      this.setColor("background")(newValue.hex8)
     },
     tempColorCodeBackground: function(newValue, _old) {
-      this.setColor("code-background")(newValue.hex)
+      this.setColor("code-background")(newValue.hex8)
     },
     tempColorCodeText: function(newValue, _old) {
-      this.setColor("code-text")(newValue.hex)
+      this.setColor("code-text")(newValue.hex8)
     },
     tempColorCodeBorder: function(newValue, _old) {
-      this.setColor("code-border")(newValue.hex)
+      this.setColor("code-border")(newValue.hex8)
     },
     tempColorQuote: function(newValue, _old) {
-      this.setColor("quote")(newValue.hex)
+      this.setColor("quote")(newValue.hex8)
     },
     tempColorHighlights: function(newValue, _old) {
-      this.setColor("highlights")(newValue.hex)
+      this.setColor("highlights")(newValue.hex8)
     },
     selectedColorPreset: function(newPresetName, old) {
       const newPreset = colorPresets.find((preset) => preset.name == newPresetName)

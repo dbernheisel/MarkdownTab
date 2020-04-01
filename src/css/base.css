@@ -1,16 +1,3 @@
-:root {
-  --background-color: #171e28;
-  --title-color:#5187b3;
-  --text-color: #a0a7b3;
-  --quote-color: #555555;
-  --highlights-color: #90b876;
-  --code-text-color: #a0a7b3;
-  --code-background-color: #23241f;
-  --code-border-color: #222222;
-  --custom-font: "sans";
-  --custom-code-font: "Fira Code, mono";
-}
-
 #cTitle {
   font-family: var(--custom-font);
   background-color: var(--background-color);

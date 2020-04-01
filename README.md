@@ -6,7 +6,8 @@ If you're anything like me, you always have a browser open, and constantly openi
 
 [Published on the Chrome Web Store](https://chrome.google.com/webstore/detail/newtab-notes/kfbhbipgippofpifimbcnbafehjndccn)
 
-# How to use
+
+## How to use
 
 Learn you some Markdown! Specifically, [GitHub-flavored Markdown] with some extra features. Continue reading to discover those features!
 
@@ -20,6 +21,7 @@ I like to stay at the keyboard when possible without moving to the mouse. This h
 - `ctrl-/` will toggle the editor
 - `ctrl-shift-/` will toggle the settings (and editor if not open)
 - `Esc` will close any window that is open, such as the editor, settings, or a color picker.
+
 
 ## Settings
 
@@ -41,9 +43,9 @@ The settings can be adjusted.
 
 - `"preset": "commonmark" | "zero" | "default"`. For more information on these presets, see the [markdown-it] docs. Omitted will use `"default"`. _NOTE:_ if you set to anything other than `"default"`, other options like `linkify` may be ignored.
 
-- `"font": "My Custom Font"`. Use this font as the general font when rendering your markdown.
+- `"font": "My Custom Font"`. Use this font as the general font when rendering your markdown. If you have multiple machines with different fonts, you can also specify fallbacks, eg: `"font"; "Comic Sans MS, sans"`. Defaults to your machine's sans font.
 
-- `"codeFont": "My Custom Font"`. Use this font when rendering code blocks and inline code.
+- `"codeFont": "My Custom Font"`. Use this font when rendering code blocks and inline code. If you have multiple machines with different fonts, you can also specify fallbacks, eg: `"font"; "Fira Code, mono"`. Defaults to your machine's mono font.
 
 
 [highlight.js]: https://highlightjs.org/

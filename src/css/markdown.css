@@ -1,5 +1,10 @@
+:root {
+  --custom-font: sans;
+  --custom-code-font: mono;
+}
+
 .rendered {
-  font-family: var(--custom-font) !important;
+  font-family: var(--custom-font);
   font-size: 1.25em;
   line-height: 1.5;
   color: var(--text-color);
@@ -12,6 +17,13 @@
   text-decoration: none;
   border-bottom: 1px dotted;
   overflow-x: scroll;
+  transition-property: filter;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
+.rendered a:hover {
+  filter: brightness(1.5);
 }
 
 .rendered b, strong {
@@ -77,12 +89,14 @@
 .rendered ol ol ol ol ol ol { list-style-type: lower-greek; }
 
 .rendered li { margin-bottom: 0.5em; }
+.rendered li:not(:last-child) ul { margin-bottom: 0; }
 
 .rendered ul.contains-task-list { margin-left: 1em; }
 .rendered li.task-list-item { list-style: none; }
 .rendered ul.contains-task-list ul.contains-task-list { margin-left: 2em; }
 
 .rendered pre {
+  font-family: var(--custom-code-font);
   border-radius: 3px;
   margin-bottom: 1em;
   overflow: auto;
@@ -101,7 +115,7 @@
 .rendered code, .rendered tt {
   background-color: var(--code-background-color);
   color: var(--code-text-color);
-  font-family: var(--custom-code-font) !important;
+  font-family: var(--custom-code-font);
   white-space: nowrap;
   border: 1px solid var(--code-border-color);
   border-radius: 3px;
@@ -115,7 +129,7 @@
 }
 
 .rendered hr {
-  margin: 3em 0px !important;
+  margin: 3em 0px;
   height: 0px;
   border: 2px solid;
 }

@@ -42,9 +42,11 @@ The settings can be adjusted.
 
 - \`"preset": "commonmark" | "zero" | "default"\`. For more information on these presets, see the [markdown-it] docs. Omitted will use \`"default"\`. _NOTE:_ if you set to anything other than \`"default"\`, other options like \`linkify\` may be ignored.
 
-- \`"font": "My Custom Font"\`. Use this font as the general font when rendering your markdown.
+- \`"font": "My Custom Font"\`. Use this font as the general font when rendering your markdown. If you have multiple machines with different fonts, you can also specify fallbacks, eg: \`"font"; "Comic Sans MS, sans"\`. Defaults to your machine's sans font.
 
-- \`"codeFont": "My Custom Font"\`. Use this font when rendering code blocks and inline code.
+- \`"codeFont": "My Custom Font"\`. Use this font when rendering code blocks and inline code. If you have multiple machines with different fonts, you can also specify fallbacks, eg: \`"font"; "Fira Code, mono"\`. Defaults to your machine's mono font.
+
+
 
 
 [highlight.js]: https://highlightjs.org/
@@ -99,20 +101,22 @@ The settings can be adjusted.
 # Elixir
 defmodule YouShouldTryElixir do
   def proclaim() do
-    IO.puts "It's enjoyable!"
+    ["It's", "super", "enjoyable!"]
+    |> Enum.join(" ")
+    |> IO.puts()
   end
 end
 \`\`\`
 
 \`\`\`javascript
-// Javascript
+// JavaScript
 const waitonme = async function() {
   console.log("Oops")
 }
 await waitonme()
 \`\`\`
 
-If you'd like to change the highlighting theme, try changing your settings to include \`"highlightTheme": "github"\` and see the code block above change colors!
+If you'd like to change the highlighting theme, try changing your settings to include \`"highlightTheme": "monokai-sublime"\` and see the code block above change colors!
 
 ## Superscript/Subscript
 
@@ -129,7 +133,9 @@ This is ^superscript^ and this is ~subscript~. Different from ~~strikeout~~
 
 ## Math
 
-Write out your maths with [KaTeX]
+Write out your maths with [KaTeX]. To use this feature, you'll need to add
+\`"math": true\` to the settings. Open the settings with \`ctrl-shift-/\`. Until
+then, this math below will look like gobbly-gook.
 
 Inline: $\sqrt{3x-1}+(1+x)^2$
 
@@ -155,11 +161,11 @@ $$\\begin{array}{c}
 export const markdownDefaults = {
   linkify: true,
   highlight: true,
-  highlightTheme: "monokai-sublime",
+  highlightTheme: "github",
   emoji: true,
   toc: true,
   superscript: true,
-  math: true,
+  math: false,
   subscript: true,
   tasklists: true
 }
