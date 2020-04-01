@@ -57,3 +57,11 @@ The settings can be adjusted.
 ## Screenshot
 
 ![Screenshot](./screenshot.png)
+
+## Credits
+
+This is a complete rewrite of the [upstream
+fork](https://github.com/intrvertmichael/MarkdownTab) which served as my initial
+inspiration. Thanks to the author for publishing their extension! For my own
+enjoyment, I decided to re-write it to practice some Vue and TailwindCSS from
+scratch.
