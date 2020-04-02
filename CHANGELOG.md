@@ -1,3 +1,8 @@
+# 1.0.3
+
+- Fix fallback fonts for Mac systems. `sans` should be `sans-serif` and `mono`
+    should be `monospace`.
+
 # 1.0.2
 
 - Fix GitHub styling and adjust defaults. Change to GitHub theme as default.

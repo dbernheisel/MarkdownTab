@@ -1,6 +1,6 @@
 :root {
-  --custom-font: sans;
-  --custom-code-font: mono;
+  --custom-font: sans-serif;
+  --custom-code-font: monospace;
 }
 
 .rendered {
