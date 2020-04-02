@@ -31,3 +31,4 @@ hub release create -a "release/NewTabNotes-${release_version}.crx" -m "Release v
 
 echo "===================="
 echo "Created upload.zip for uploading to Chrome Web Store"
+echo "https://chrome.google.com/webstore/developer/dashboard"
