@@ -30,7 +30,7 @@
             <div v-show="show.settings" class="flex flex-wrap text-black bg-orange-300">
               <div class="w-full p-2 sm:w-1/2">
                 <h2 class="text-black">Markdown Options</h2>
-                <textarea v-model="tempSettings" class="w-full h-full font-mono text-black resize-none"></textarea>
+                <textarea spellcheck="false" v-model="tempSettings" class="w-full h-full font-mono text-black resize-none"></textarea>
               </div>
 
               <div class="w-full p-2 sm:w-1/2">
