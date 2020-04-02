@@ -1,6 +1,6 @@
 {
   "name": "markdowntab",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "\"A Chrome Extension to replace the newtab page with notes via a Markdown editor\"",
   "main": "src/newtab.js",
   "dependencies": {
