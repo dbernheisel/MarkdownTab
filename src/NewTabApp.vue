@@ -322,11 +322,7 @@ export default {
 
     saveToGoogle: function(key, value) {
       try {
-        if (typeof key_or_object === 'object' && key_or_object !== null) {
-          chrome.storage.sync.set(key_or_object);
-        } else {
-          chrome.storage.sync.set({ [key]: value });
-        }
+        chrome.storage.sync.set({ [key]: value });
       } catch (err) {
         console.warn(`Could not save ${key}`);
         console.error(err);
