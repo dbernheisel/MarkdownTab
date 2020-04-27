@@ -29,13 +29,15 @@ There are several settings that you can take advantage of to customize your expe
 
 The settings can be adjusted.
 
-- `emoji": true | false` Enable/disable emojis to be written as `:)` to render :) as a shortcut
+- `"emoji": true | false` Enable/disable emojis to be written as `:)` to render :) as a shortcut
 
 - `"highlight": true | false`. Enable/disable syntax highlighting in code blocks. This uses [highlight.js].
 
 - `"highlightTheme": "sometheme"`. Use the specified [highlight.js] theme. For a list of possible themes, see [highlight.js themes] and use the [filename] as the value, such as `"monokai-sublime"`. This only applies to code blocks, and not inline code. For inline code, please use a custom color or one of the built-in color presets.
 
 - `"linkify": true | false`. Enable/disable auto-linking. For example, https://github.com will autolink without requiring it to be written as `[https://github.com](https://github.com)`
+
+- `"html": true | false`. Enable/disable rendering HTML. That is, if you have HTML in your Markdown, normally the HTML is ignored but if this setting is set to `true` then the HTML will pass through and render.
 
 - `"toc": true | false`. Enable/disable generating a table of contents with the markup `[[toc]]`. See [markdown-it toc] for more info. This will create a ToC based on the H1-H2 headers.
 
@@ -57,6 +59,47 @@ The settings can be adjusted.
 ## Screenshot
 
 ![Screenshot](./screenshot.png)
+
+## Tips
+
+### Custom HTML
+
+This uses [TailwindCSS] and therefore has some classes available for you to use
+in custom HTML inside your markdown.
+
+If you want to enable HTML pass-thru in your Markdown, you'll need to add the
+option `"html": true` into your settings. Then, you can add any HTML to be
+rendered in your notes.
+
+For example, if you wanted to add columns for a list of links, you could do
+something like this:
+
+```html
+
+# Links
+
+<div class="flex flex-wrap">
+<div class="sm:w-1/2 md:w-1/3">
+
+- github.com
+- twitter.com
+
+</div>
+
+<div class="sm:w-1/2 md:w-1/3">
+
+- feedly.com
+- reddit.com
+
+</div>
+</div>
+```
+
+and it would render like this:
+
+![HTML Column Example](./html-example.png)
+
+[TailwindCSS]: https://tailwindcss.com/
 
 ## Credits
 

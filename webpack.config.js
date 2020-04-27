@@ -19,6 +19,8 @@ const purge = new PurgecssPlugin({
   // https://medium.com/@kyis/vue-tailwind-purgecss-the-right-way-c70d04461475#3f95
   whitelistPatterns: [
     /-(leave|enter|appear)(|-(to|from|active))$/,
+    /flex/,
+    /w-.*/,
     /^(?!(|.*?:)cursor-move).+-move$/,
     /^router-link(|-exact)-active$/, /data-v-.*/
   ],
