@@ -29,7 +29,7 @@ There are several settings that you can take advantage of to customize your expe
 
 The settings can be adjusted.
 
-- `"emoji": true | false` Enable/disable emojis to be written as `:)` to render :) as a shortcut
+- `"emoji": true | false` Enable/disable emojis to be written as `:)` to render ![:)](./smiley-emoji.png) as a shortcut
 
 - `"highlight": true | false`. Enable/disable syntax highlighting in code blocks. This uses [highlight.js].
 
