@@ -1,4 +1,5 @@
 import hljs from "highlight.js";
+import md from "markdown-it";
 
 export const highlighter = function(str, lang) {
   if (lang && hljs.getLanguage(lang)) {
