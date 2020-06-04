@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "NewTab Notes",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Markdown document replaces your new tab page. Syncs with all your devices.",
   "icons": {
     "16": "icons/favicon-16x16.png",
